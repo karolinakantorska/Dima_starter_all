@@ -19,6 +19,27 @@ export const PATH_AUTH = {
   resetPassword: path(ROOTS_AUTH, '/reset-password'),
   newPassword: path(ROOTS_AUTH, '/new-password'),
 };
+export const PATH_UNTERNEHMEN = {
+  ueber_uns: '/unternehmen/ueber_uns',
+  leistungen: '/unternehmen/leistungen',
+  mitarbeitern: '/unternehmen/mitarbeitern',
+  jobs: '/unternehmen/jobs',
+};
+export const PATH_REFERENZEN = {
+  referenzen: '/referenzen',
+};
+export const PATH_KONTAKT = {
+  kontakt: '/kontakt',
+};
+export const PATH_PARTNER = {
+  partner: '/partner',
+};
+export const PATH_NEWS = {
+  news: '/news',
+};
+export const PATH_LINKS = {
+  links: '/links',
+};
 
 export const PATH_PAGE = {
   comingSoon: '/coming-soon',

@@ -12,16 +12,14 @@ type Props = {
   children: ReactNode;
   variant?: 'main' | 'dashboard' | 'logoOnly';
 };
-
 export default function Layout({ variant = 'dashboard', children }: Props) {
   if (variant === 'logoOnly') {
     return <LogoOnlyLayout> {children} </LogoOnlyLayout>;
   }
-
+// Here I am by landing
   if (variant === 'main') {
     return <MainLayout>{children}</MainLayout>;
   }
-
   return (
     <AuthGuard>
       <DashboardLayout> {children} </DashboardLayout>

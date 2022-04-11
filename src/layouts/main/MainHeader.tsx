@@ -16,7 +16,7 @@ import Label from '../../components/Label';
 //
 import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';
-import navConfig from './MenuConfig';
+import { menuConfigMain, menuConfigSecond } from './MenuConfig';
 
 // ----------------------------------------------------------------------
 
@@ -48,15 +48,11 @@ const ToolbarShadowStyle = styled('div')(({ theme }) => ({
 
 export default function MainHeader() {
   const isOffset = useOffSetTop(HEADER.MAIN_DESKTOP_HEIGHT);
-
   const theme = useTheme();
-
   const { pathname } = useRouter();
-
   const isDesktop = useResponsive('up', 'md');
-
+  const isUpToMiddleScreen = useResponsive('up', 'sm');
   const isHome = pathname === '/';
-
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
       <ToolbarStyle
@@ -76,25 +72,24 @@ export default function MainHeader() {
           }}
         >
           <Logo />
-
-          <Label color="info" sx={{ ml: 1 }}>
-            v3.4.0
-          </Label>
-
           <Box sx={{ flexGrow: 1 }} />
+          {isUpToMiddleScreen && (
+            <>
+            <MenuDesktop 
+          isOffset={isOffset} 
+          isHome={isHome} 
+          navConfig={menuConfigMain} 
+          />
+          <MenuMobile 
+          isOffset={isOffset} 
+          isHome={isHome} 
+          navConfig={menuConfigSecond} />
+            </>
+          
+          )          }
+   
 
-          {isDesktop && <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />}
-
-          <Button
-            variant="contained"
-            target="_blank"
-            rel="noopener"
-            href="https://material-ui.com/store/items/minimal-dashboard/"
-          >
-            Purchase Now
-          </Button>
-
-          {!isDesktop && <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={navConfig} />}
+   {!isUpToMiddleScreen && <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={[...menuConfigMain, ...menuConfigSecond]} />}
         </Container>
       </ToolbarStyle>
 
