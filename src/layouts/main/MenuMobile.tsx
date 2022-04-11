@@ -15,6 +15,7 @@ import {
   ListItemIcon,
   ListItemButton,
   ListItemButtonProps,
+  Stack
 } from '@mui/material';
 // config
 import { NAVBAR } from '../../config';
@@ -85,12 +86,15 @@ export default function MenuMobile({ isOffset, isHome, navConfig }: MenuProps) {
 
       <Drawer
         open={drawerOpen}
+        anchor='right'
         onClose={handleDrawerClose}
         ModalProps={{ keepMounted: true }}
         PaperProps={{ sx: { pb: 5, width: 260 } }}
       >
         <Scrollbar>
-          <Logo sx={{ mx: 2.5, my: 3 }} />
+        <Stack height="100px" direction="row" alignItems="center" justifyContent="flex-end">
+            <p>close icon</p>
+          </Stack>
 
           <List disablePadding>
             {navConfig.map((link) => (
