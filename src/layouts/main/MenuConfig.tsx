@@ -18,7 +18,7 @@ export const menuConfigMain = [
     path: PATH_REFERENZEN.referenzen,
   },
   {
-    title: 'Uternehmen',
+    title: 'Unternehmen',
     path: '/unternehmen',
     children: [
       {

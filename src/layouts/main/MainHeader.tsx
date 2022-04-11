@@ -85,11 +85,8 @@ export default function MainHeader() {
           isHome={isHome} 
           navConfig={menuConfigSecond} />
             </>
-          
           )          }
-   
-
-   {!isUpToMiddleScreen && <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={[...menuConfigMain, ...menuConfigSecond]} />}
+     {!isUpToMiddleScreen && <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={[...menuConfigMain, ...menuConfigSecond]} />}
         </Container>
       </ToolbarStyle>
 

@@ -167,24 +167,24 @@ function MenuDesktopItem({
           PaperProps={{
             sx: {
               px: 3,
-              pt: 5,
+              pt: 0,
               pb: 3,
               right: 16,
               m: 'auto',
-              borderRadius: 2,
+              borderRadius: 0,
               maxWidth: (theme) => theme.breakpoints.values.lg,
               boxShadow: (theme) => theme.customShadows.z24,
             },
           }}
         >
-          <Grid container spacing={3}>
+          <Grid container spacing={3} justifyContent="center">
             {children.map((list) => {
               const { subheader, items } = list;
 
               return (
                 <Grid key={subheader} item xs={12} md={subheader === 'Dashboard' ? 6 : 2}>
                   <List disablePadding>
-                    <ListSubheader
+                    {(subheader !== '') && <ListSubheader
                       disableSticky
                       disableGutters
                       sx={{
@@ -196,7 +196,7 @@ function MenuDesktopItem({
                       }}
                     >
                       <IconBullet type="subheader" /> {subheader}
-                    </ListSubheader>
+                    </ListSubheader>}
 
                     {items.map((item) => (
                       <NextLink key={item.title} href={item.path} passHref>

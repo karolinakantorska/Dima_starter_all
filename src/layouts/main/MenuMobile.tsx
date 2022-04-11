@@ -38,6 +38,8 @@ interface ListItemStyleProps extends StyleProps {
 
 const ListItemStyle = styled(ListItemButton)<ListItemStyleProps>(({ theme }) => ({
   ...theme.typography.body2,
+  
+  marginTop:0,
   height: NAVBAR.DASHBOARD_ITEM_ROOT_HEIGHT,
   textTransform: 'capitalize',
   color: theme.palette.text.secondary,
@@ -47,9 +49,7 @@ const ListItemStyle = styled(ListItemButton)<ListItemStyleProps>(({ theme }) => 
 
 export default function MenuMobile({ isOffset, isHome, navConfig }: MenuProps) {
   const { pathname } = useRouter();
-
-  const [open, setOpen] = useState(false);
-
+  const [open, setOpen] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
@@ -118,13 +118,11 @@ type MenuMobileItemProps = {
 function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
   const { pathname } = useRouter();
   const { title, path, icon, children } = item;
-
   const isActive = pathname === path;
-
   if (children) {
     return (
       <>
-        <ListItemStyle onClick={onOpen}>
+        <ListItemStyle onClick={onOpen} dense>
           <ListItemIcon>{icon}</ListItemIcon>
           <ListItemText disableTypography primary={title} />
           <Iconify
@@ -134,18 +132,18 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
         </ListItemStyle>
 
         <Collapse in={isOpen} timeout="auto" unmountOnExit>
-          <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column-reverse', mt: '0' }}>
             <NavSectionVertical
               navConfig={children}
               sx={{
                 '& .MuiList-root:last-of-type .MuiListItemButton-root': {
-                  height: 200,
+                  height: 40,
+                  paddingLeft: 5,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  bgcolor: 'background.neutral',
+                  //bgcolor: 'background.default',
                   backgroundRepeat: 'no-repeat',
-                  backgroundImage: 'url(/assets/illustrations/illustration_dashboard.png)',
-                  '& > *:not(.MuiTouchRipple-root)': { display: 'none' },
+
                 },
               }}
             />
@@ -155,14 +153,6 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
     );
   }
 
-  if (title === 'Documentation') {
-    return (
-      <ListItemStyle href={path} target="_blank" rel="noopener" component={Link}>
-        <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText disableTypography primary={title} />
-      </ListItemStyle>
-    );
-  }
 
   return (
     <NextLink href={path} passHref>

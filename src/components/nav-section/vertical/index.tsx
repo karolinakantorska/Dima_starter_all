@@ -36,7 +36,7 @@ export default function NavSectionVertical({
     <Box {...other}>
       {navConfig.map((group) => (
         <List key={group.subheader} disablePadding sx={{ px: 2 }}>
-          <ListSubheaderStyle
+          {(group.subheader!== '') && <ListSubheaderStyle
             sx={{
               ...(isCollapse && {
                 opacity: 0,
@@ -44,7 +44,7 @@ export default function NavSectionVertical({
             }}
           >
             {translate(group.subheader)}
-          </ListSubheaderStyle>
+          </ListSubheaderStyle>}
 
           {group.items.map((list) => (
             <NavListRoot key={list.title + list.path} list={list} isCollapse={isCollapse} />
