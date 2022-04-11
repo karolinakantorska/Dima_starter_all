@@ -8,7 +8,7 @@ const LinksCom: NextPage = () => {
     <>
       <p>Links:</p>
       {paths.map((path) => (
-        <Link href={`/${path[1]}`}>
+        <Link key= {`/${path[1]}`} href={`/${path[1]}`}>
           <div>
             <a>{`${path[0]}`}</a>
           </div>
