@@ -10,6 +10,7 @@ import Image from '../../components/Image';
 import Iconify from '../../components/Iconify';
 import TextIconLabel from '../../components/TextIconLabel';
 import { MotionContainer, varFade } from '../../components/animate';
+import LandingVideo from './LandingVideo';
 
 // ----------------------------------------------------------------------
 
@@ -72,13 +73,9 @@ export default function HomeHero() {
   return (
     <MotionContainer>
       <RootStyle>
-        <HeroOverlayStyle alt="overlay" src="/assets/overlay.svg" variants={varFade().in} />
+        <HeroOverlayStyle alt="overlay" src="/assets/overlay.svg" variants={varFade().inOpacity} />
 
-        <HeroImgStyle
-          alt="hero"
-          src="https://minimal-assets-api-dev.vercel.app/assets/images/home/hero.png"
-          variants={varFade().inUp}
-        />
+        <LandingVideo />
 
         <Container>
           <ContentStyle>

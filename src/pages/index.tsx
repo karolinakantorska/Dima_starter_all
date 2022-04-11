@@ -35,24 +35,16 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 
 export default function HomePage() {
   return (
-    <Page title="The starting point for your next project">
+    <Page title={`Dima & Partner Bauunternehmung. wir entwickeln. wir planen. wir realisieren.`}>
       <HomeHero />
-
       <ContentStyle>
         <HomeMinimal />
-
         <HomeHugePackElements />
-
         <HomeDarkMode />
-
         <HomeColorPresets />
-
         <HomeCleanInterfaces />
-
         <HomePricingPlans />
-
         <HomeLookingFor />
-
         <HomeAdvertisement />
       </ContentStyle>
     </Page>
