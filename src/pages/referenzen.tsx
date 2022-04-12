@@ -63,7 +63,7 @@ export default function ReferenzenCom() {
         spacing={4}
         >
 {_carouselsMembers.map((member) => ( 
-  <Grid item>
+  <Grid item key={member.id}>
                 <ProjektCardSmallCom member={member} />
                 </Grid>          
             ))}
