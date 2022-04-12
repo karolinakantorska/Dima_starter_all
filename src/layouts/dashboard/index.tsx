@@ -12,6 +12,7 @@ import { HEADER, NAVBAR } from '../../config';
 import DashboardHeader from './header';
 import NavbarVertical from './navbar/NavbarVertical';
 import NavbarHorizontal from './navbar/NavbarHorizontal';
+import MainHeader from '../main/MainHeader';
 
 // ----------------------------------------------------------------------
 
@@ -61,7 +62,7 @@ export default function DashboardLayout({ children }: Props) {
     return (
       <>
         <DashboardHeader onOpenSidebar={() => setOpen(true)} verticalLayout={verticalLayout} />
-
+<MainHeader />
         {isDesktop ? (
           <NavbarHorizontal />
         ) : (
@@ -95,7 +96,7 @@ export default function DashboardLayout({ children }: Props) {
         minHeight: { lg: 1 },
       }}
     >
-      <DashboardHeader isCollapse={isCollapse} onOpenSidebar={() => setOpen(true)} />
+<MainHeader />
 
       <NavbarVertical isOpenSidebar={open} onCloseSidebar={() => setOpen(false)} />
 

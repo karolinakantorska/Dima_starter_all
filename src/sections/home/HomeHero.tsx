@@ -100,14 +100,7 @@ export default function HomeHero() {
                   Projekte
                 </Button>
               </NextLink>
-
             </Stack>
-            
-
-            
-
-            
-          
           </ContentStyle>
         </Container>
       </RootStyle>

@@ -13,7 +13,7 @@ import MainHeader from './MainHeader';
 
 type Props = {
   children: ReactNode;
-};
+}; 
 
 export default function MainLayout({ children }: Props) {
   const { pathname } = useRouter();

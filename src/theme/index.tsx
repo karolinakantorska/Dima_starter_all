@@ -20,7 +20,7 @@ type Props = {
 export default function ThemeProvider({ children }: Props) {
   const { themeMode, themeDirection } = useSettings();
 
-  const isLight = themeMode === 'light';
+  const isLight = themeMode === 'dark';
 
   const themeOptions: ThemeOptions = useMemo(
     () => ({

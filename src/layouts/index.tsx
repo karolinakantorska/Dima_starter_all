@@ -18,11 +18,14 @@ export default function Layout({ variant = 'dashboard', children }: Props) {
   }
 // Here I am by landing
   if (variant === 'main') {
-    return <MainLayout>{children}</MainLayout>;
+    return <MainLayout> {children}</MainLayout>;
   }
   return (
-    <AuthGuard>
+      <DashboardLayout> {children} </DashboardLayout>
+   );
+}
+/*
+<AuthGuard>
       <DashboardLayout> {children} </DashboardLayout>
     </AuthGuard>
-  );
-}
+    */
