@@ -27,6 +27,7 @@ export default function BackgroundView() {
 
       <Grid container spacing={3}>
         <Grid item xs={9}>
+          {/*This is the boat */}
           <ContainerView key={count} selectVariant={selectVariant} />
         </Grid>
         <Grid item xs={3}>

@@ -28,11 +28,13 @@ export default function ContainerView({ selectVariant, ...other }: ContainerView
           component={m.img}
           src="https://minimal-assets-api-dev.vercel.app/assets/images/feeds/feed_8.jpg"
           {...getVariant(selectVariant)}
-          sx={{ width: 1, height: 1, objectFit: 'cover' }}
+        // sx={{ width: 1, height: 1, objectFit: 'cover' }}
         />
       ) : (
-        <Box component={m.div} {...getVariant(selectVariant)} sx={{ height: 1, width: 1 }} />
+        false && <Box component={m.div} {...getVariant(selectVariant)} sx={{ height: 1, width: 1 }} />
       )}
     </Paper>
   );
 }
+
+

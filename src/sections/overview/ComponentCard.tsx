@@ -31,6 +31,7 @@ export default function ComponentCard({ item }: Props) {
             bgcolor: 'background.neutral',
           }}
         >
+          {/* ANIMATION ON HOVER*/}
           <m.div variants={varHover(1.2)} transition={varTranHover()}>
             <Image src={icon} alt={name} effect="black-and-white" />
           </m.div>
