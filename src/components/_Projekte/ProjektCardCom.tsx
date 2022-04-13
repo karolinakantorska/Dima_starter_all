@@ -5,7 +5,7 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 // components
-import { varHover, varTranHover } from '../../components/animate';
+import { varHover, varTranHover } from '../animate';
 //import Image from '../../components/Image';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
