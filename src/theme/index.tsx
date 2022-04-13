@@ -20,17 +20,20 @@ type Props = {
 export default function ThemeProvider({ children }: Props) {
   const { themeMode, themeDirection } = useSettings();
 
-  const isLight = themeMode === 'dark';
+  const isLight = themeMode === 'light';
 
   const themeOptions: ThemeOptions = useMemo(
     () => ({
-      palette: isLight ? palette.light : palette.dark,
+      //palette: isLight ? palette.light : palette.dark,
+      palette: palette.dark,
       typography,
       breakpoints,
       shape: { borderRadius: 0 },
       direction: themeDirection,
-      shadows: isLight ? shadows.light : shadows.dark,
-      customShadows: isLight ? customShadows.light : customShadows.dark,
+      //shadows: isLight ? shadows.light : shadows.dark,
+      shadows: shadows.dark,
+      //customShadows: isLight ? customShadows.light : customShadows.dark,
+      customShadows: customShadows.dark,
     }),
     [isLight, themeDirection]
   );

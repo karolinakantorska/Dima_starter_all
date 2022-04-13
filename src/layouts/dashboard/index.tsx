@@ -98,7 +98,7 @@ export default function DashboardLayout({ children }: Props) {
     >
 <MainHeader />
 
-      <NavbarVertical isOpenSidebar={open} onCloseSidebar={() => setOpen(false)} />
+
 
       <MainStyle collapseClick={collapseClick}>{children}</MainStyle>
     </Box>

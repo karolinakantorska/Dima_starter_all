@@ -69,7 +69,7 @@ export default function MenuDesktop({ isOffset, isHome, navConfig }: MenuProps) 
   const handleClose = () => {
     setOpen(false);
   };
-
+// Menu desktop Unternehmen Referenzen etc
   return (
     <Stack direction="row">
       {navConfig.map((link) => (
@@ -246,22 +246,6 @@ function MenuDesktopItem({
           </Grid>
         </Popover>
       </>
-    );
-  }
-
-  if (title === 'Documentation') {
-    return (
-      <LinkStyle
-        href={path}
-        target="_blank"
-        rel="noopener"
-        sx={{
-          ...(isHome && { color: 'common.white' }),
-          ...(isOffset && { color: 'text.primary' }),
-        }}
-      >
-        {title}
-      </LinkStyle>
     );
   }
 
