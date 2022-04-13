@@ -17,8 +17,8 @@ type MemberCardProps = {
   avatar: string;
 };
 function randomWithProbability() {
-  let notRandomNumbers = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1];
-  let idx = Math.floor(Math.random() * notRandomNumbers.length);
+  const notRandomNumbers = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1];
+  const idx = Math.floor(Math.random() * notRandomNumbers.length);
   return notRandomNumbers[idx];
 }
 
