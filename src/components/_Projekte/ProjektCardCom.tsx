@@ -15,11 +15,10 @@ type MemberCardProps = {
   name: string;
   role: string | undefined;
   avatar: string;
-
 };
 function randomWithProbability() {
-  var notRandomNumbers = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1];
-  var idx = Math.floor(Math.random() * notRandomNumbers.length);
+  let notRandomNumbers = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1];
+  let idx = Math.floor(Math.random() * notRandomNumbers.length);
   return notRandomNumbers[idx];
 }
 
@@ -27,7 +26,7 @@ export function ProjektCardCom({ member, i, direction, }: { member: MemberCardPr
   const { name, role, avatar, id } = member;
   const isDesktop = useResponsive('up', 'lg');
   const random = randomWithProbability();
-  let big: boolean = false;
+  let big = false;
   if (random && i > 3) {
     direction = "row";
     big = true;
