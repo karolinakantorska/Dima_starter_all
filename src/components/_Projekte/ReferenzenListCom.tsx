@@ -4,13 +4,12 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 // hooks
 import useSettings from '../../hooks/useSettings';
+
+import useResponsive from '../../hooks/useResponsive';
 // components
 import { ProjektCardCom } from './ProjektCardCom';
 // _mock_
 import { _carouselsMembers } from '../../_mock/_others';
-
-import { m } from 'framer-motion';
-import getVariant from '../../sections/overview/extra/animate/getVariant';
 
 const RootStyle = styled('div')(({ theme }) => ({
   minHeight: '100%',
@@ -19,51 +18,47 @@ const RootStyle = styled('div')(({ theme }) => ({
 }));
 export function ReferenzenListCom() {
   const { themeStretch } = useSettings();
+  const isDesktop = useResponsive('up', 'lg');
+  const isSmall = useResponsive('down', 'sm');
+  const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   return (
     <RootStyle>
       <Container maxWidth={themeStretch ? false : 'xl'}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          spacing={2}
-        >
+        <Grid container direction="column" justifyContent="center" spacing={2}>
           <Grid item>
-            <Stack direction="row" spacing={2} justifyContent="center"  >
-              <Typography variant="overline" component="p" paragraph color='text.secondary'>
+            <Stack direction="row" spacing={2} justifyContent="center">
+              <Typography variant="overline" component="p" paragraph color="text.secondary">
                 Mehrfamilien
               </Typography>
-              <Typography variant="overline" component="p" paragraph color='text.secondary'>
+              <Typography variant="overline" component="p" paragraph color="text.secondary">
                 Gewerbe
               </Typography>
-              <Typography variant="overline" component="p" paragraph color='text.secondary'>
+              <Typography variant="overline" component="p" paragraph color="text.secondary">
                 Hotel
               </Typography>
             </Stack>
           </Grid>
           <Grid item>
-            <Grid
-              container
-              direction="row"
-              justifyContent="center"
-              spacing={4}
+            <Box
+              display="grid"
+              gridTemplateColumns={gtc}
+              gridAutoFlow="dense"
+              columnGap="12px"
+              rowGap="20px"
+              //sx={{ maxWidth: '1000px' }}
             >
-              {/*<Box
-                component={m.img}
-                src="https://minimal-assets-api-dev.vercel.app/assets/images/feeds/feed_8.jpg"
-
-                {...getVariant('kenburnsTop')}
-                sx={{ width: 1, height: 1, objectFit: 'cover' }}
-  />*/}
               {_carouselsMembers.map((member, i) => {
-                const result = (i % 2 == 0) ? true : false;
+                const result = i % 2 == 0 ? true : false;
                 return (
-                  <Grid item key={member.id}>
-                    <ProjektCardCom member={member} i={i} direction={result ? "column-reverse" : "column"} />
-                  </Grid>
-                )
+                  <ProjektCardCom
+                    key={member.id}
+                    member={member}
+                    i={i}
+                    gridRow={isSmall ? '1' : result ? '1' : '2'}
+                  />
+                );
               })}
-            </Grid>
+            </Box>
           </Grid>
         </Grid>
       </Container>

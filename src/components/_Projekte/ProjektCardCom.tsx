@@ -1,14 +1,15 @@
 import { m } from 'framer-motion';
-import Image from "next/image";
+//import Image from 'next/image';
 // @mui
-import Card from "@mui/material/Card";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 // components
 import { varHover, varTranHover } from '../animate';
-//import Image from '../../components/Image';
+import Image from '../../components/Image';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
+import { ProjektCardBigCom } from './ProjektCardBigCom';
 
 type MemberCardProps = {
   id: string;
@@ -17,53 +18,57 @@ type MemberCardProps = {
   avatar: string;
 };
 function randomWithProbability() {
-  const notRandomNumbers = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1];
+  const notRandomNumbers = [0, 0, 0, 0, 0, 0, 10, 1, 1, 1];
   const idx = Math.floor(Math.random() * notRandomNumbers.length);
   return notRandomNumbers[idx];
 }
 
-export function ProjektCardCom({ member, i, direction, }: { member: MemberCardProps, i: number, direction: 'column-reverse' | "column" | "row" }) {
+export function ProjektCardCom({
+  member,
+  i,
+  gridRow,
+}: {
+  member: MemberCardProps;
+  i: number;
+  gridRow: '1' | '2';
+}) {
   const { name, role, avatar, id } = member;
   const isDesktop = useResponsive('up', 'lg');
+  const isSmall = useResponsive('down', 'sm');
   const random = randomWithProbability();
+  const gridAutoRows = isSmall ? '' : '1fr';
   let big = false;
-  if (random && i > 3) {
-    direction = "row";
-    big = true;
+  if (isDesktop) {
+    if (random) {
+      big = true;
+    }
   }
+
   return (
     <>
-      <Grid
-        container
-        direction={direction}
-        justifyContent="center"
-        alignItems="flex-start"
-        sx={isDesktop && big ? { width: 1180, height: 500 } : { width: 380, height: 430 }}
-        component={m.div}
-        whileHover="hover"
-      >
-        <Grid
-          item
+      {big ? (
+        <ProjektCardBigCom member={member} />
+      ) : (
+        <Box
           sx={{
+            display: 'grid',
+            gridAutoRows: { gridAutoRows },
             overflow: 'hidden',
           }}
+          component={m.div}
+          whileHover="hover"
         >
-
           <Card
             component={m.div}
-            variants={varHover(1.05)} transition={varTranHover()}
-            sx={isDesktop && big ? { width: 800, height: 500, } : { width: 380, height: 214 }}
+            variants={varHover(1.05)}
+            transition={varTranHover()}
+            sx={{
+              gridRow: { gridRow },
+            }}
           >
-            <Image src={avatar}
-              alt={name}
-              layout='fill' />
+            <Image src={avatar} alt={name} ratio="16/9" />
           </Card>
-
-        </Grid>
-        <Grid item>
-          <Card
-            sx={{ width: 380, height: 216, p: 4 }}
-          >
+          <Card sx={{ p: 4 }}>
             <Typography variant="overline" sx={{ mt: 2, mb: 0.5 }}>
               {name}
             </Typography>
@@ -71,13 +76,8 @@ export function ProjektCardCom({ member, i, direction, }: { member: MemberCardPr
               {role}
             </Typography>
           </Card>
-        </Grid>
-      </Grid >
+        </Box>
+      )}
     </>
-
   );
 }
-/*
-<Image src={avatar} alt={name} />
-
-                */
