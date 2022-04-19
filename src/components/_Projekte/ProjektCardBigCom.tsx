@@ -17,12 +17,19 @@ type MemberCardProps = {
   avatar: string;
 };
 
-export function ProjektCardBigCom({ member }: { member: MemberCardProps }) {
+export function ProjektCardBigCom({
+  member,
+  handleClick,
+}: {
+  member: MemberCardProps;
+  handleClick: any;
+}) {
   const { name, role, avatar, id } = member;
 
   return (
     <>
       <Box
+        onClick={handleClick}
         sx={{
           gridColumn: 'span 3',
           display: 'grid',

@@ -1,4 +1,5 @@
 import { m } from 'framer-motion';
+import { useRouter } from 'next/router';
 //import Image from 'next/image';
 // @mui
 import Card from '@mui/material/Card';
@@ -33,6 +34,7 @@ export function ProjektCardCom({
   gridRow: '1' | '2';
 }) {
   const { name, role, avatar, id } = member;
+  const router = useRouter();
   const isDesktop = useResponsive('up', 'lg');
   const isSmall = useResponsive('down', 'sm');
   const random = randomWithProbability();
@@ -43,13 +45,18 @@ export function ProjektCardCom({
       big = true;
     }
   }
+  const handleClick = (e) => {
+    //e.preventDefault()
+    router.push(`/referenz/${id}`);
+  };
 
   return (
     <>
       {big ? (
-        <ProjektCardBigCom member={member} />
+        <ProjektCardBigCom member={member} handleClick={handleClick} />
       ) : (
         <Box
+          onClick={handleClick}
           sx={{
             display: 'grid',
             gridAutoRows: { gridAutoRows },
