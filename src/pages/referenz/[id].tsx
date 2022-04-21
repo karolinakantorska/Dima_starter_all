@@ -17,7 +17,7 @@ export default function Referenz() {
   return (
     <Layout>
       <Page title="Projekte | Dima & Partner | Glarus Zurich Arosa">
-        <OneProjectCom id={id} />
+        <OneProjectCom />
       </Page>
     </Layout>
   );

@@ -26,7 +26,7 @@ const RootStyle = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(15),
   paddingBottom: theme.spacing(10),
 }));
-export function OneProjectCom({ id }: { id: number }) {
+export function OneProjectCom() {
   const { themeStretch } = useSettings();
   const isDesktop = useResponsive('up', 'lg');
   const isSmall = useResponsive('down', 'sm');
