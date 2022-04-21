@@ -21,10 +21,12 @@ ReferenzenCom.getLayout = function getLayout(page: ReactElement) {
 
 export default function ReferenzenCom() {
   return (
-    <Page title="Dima & Partner | Glarus Zurich Arosa">
-      <RootStyle>
-        <ReferenzenListCom />
-      </RootStyle>
-    </Page>
+    <Layout>
+      <Page title="Dima & Partner | Glarus Zurich Arosa">
+        <RootStyle>
+          <ReferenzenListCom />
+        </RootStyle>
+      </Page>
+    </Layout>
   );
 }

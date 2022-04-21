@@ -15,29 +15,31 @@ export default function KontaktCom() {
   const { themeStretch } = useSettings();
 
   return (
-    <Page title="Dima & Partner | Glarus Zurich Arosa">
-      <Container>
-        <Grid container direction="row" justifyContent="center" spacing={4}>
-          <Grid item>
-            <Typography variant="h6" component="h1" paragraph color="#e87b45">
-              Glarus
-            </Typography>
-            <Typography gutterBottom>
-              Gewerbezentrum Holenstein <br />
-              19 8750 Glarus
-            </Typography>
+    <Layout>
+      <Page title="Dima & Partner | Glarus Zurich Arosa">
+        <Container>
+          <Grid container direction="row" justifyContent="center" spacing={4}>
+            <Grid item>
+              <Typography variant="h6" component="h1" paragraph color="#e87b45">
+                Glarus
+              </Typography>
+              <Typography gutterBottom>
+                Gewerbezentrum Holenstein <br />
+                19 8750 Glarus
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="h6" component="h1" paragraph color="#e87b45">
+                Zürich
+              </Typography>
+              <Typography gutterBottom>
+                Grubenstrasse 38 <br />
+                8045 Zürich
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Typography variant="h6" component="h1" paragraph color="#e87b45">
-              Zürich
-            </Typography>
-            <Typography gutterBottom>
-              Grubenstrasse 38 <br />
-              8045 Zürich
-            </Typography>
-          </Grid>
-        </Grid>
-      </Container>
-    </Page>
+        </Container>
+      </Page>
+    </Layout>
   );
 }

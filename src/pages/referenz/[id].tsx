@@ -15,8 +15,10 @@ export default function Referenz() {
   const { id } = router.query;
   console.log('id:', id);
   return (
-    <Page title="Projekte | Dima & Partner | Glarus Zurich Arosa">
-      <OneProjectCom id={id} />
-    </Page>
+    <Layout>
+      <Page title="Projekte | Dima & Partner | Glarus Zurich Arosa">
+        <OneProjectCom id={id} />
+      </Page>
+    </Layout>
   );
 }

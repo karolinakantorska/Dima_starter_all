@@ -1,4 +1,3 @@
-
 // @mui
 import { styled } from '@mui/material/styles';
 import Page from 'src/components/Page';
@@ -19,11 +18,12 @@ JobsCom.getLayout = function getLayout(page: React.ReactElement) {
 
 export default function JobsCom() {
   return (
-    <Page title="About us">
-
-      <RootStyle>
-        <p>Jobs</p>
-      </RootStyle>
-    </Page>
+    <Layout>
+      <Page title="About us">
+        <RootStyle>
+          <p>Jobs</p>
+        </RootStyle>
+      </Page>
+    </Layout>
   );
 }

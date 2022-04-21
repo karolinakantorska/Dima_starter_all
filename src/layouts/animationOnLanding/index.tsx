@@ -1,6 +1,8 @@
 import { useState, ReactNode, useEffect } from 'react';
 // next
 import { useRouter } from 'next/router';
+
+import { AnimatePresence } from 'framer-motion';
 // @mui
 import { Box, Stack } from '@mui/material';
 // components
@@ -26,36 +28,13 @@ export default function AnimationOnLandingLayout({ children }: Props) {
   }, []);
   return (
     <>
-      <Slide direction="right" in={show} appear={false} timeout={timeout} easing={easing}>
-        <Box
-          position="fixed"
-          sx={{
-            zIndex: 1200,
-            width: '50vw',
-            height: '100vh',
-            backgroundColor: 'grey.0',
-          }}
-        />
-      </Slide>
-
-      <Slide direction="left" in={show} appear={false} timeout={timeout} easing={easing}>
-        <Box
-          position="fixed"
-          sx={{
-            zIndex: 1200,
-            ml: '50vw',
-            width: '50vw',
-            height: '100vh',
-            backgroundColor: 'grey.0',
-          }}
-        />
-      </Slide>
-
-      <Stack sx={{ minHeight: 1 }}>
-        <MainHeader />
-        {children}
-        <Box sx={{ flexGrow: 1 }} />
-      </Stack>
+      <AnimatePresence exitBeforeEnter>
+        <Stack sx={{ minHeight: 1 }}>
+          <MainHeader />
+          {children}
+          <Box sx={{ flexGrow: 1 }} />
+        </Stack>
+      </AnimatePresence>
     </>
   );
 }

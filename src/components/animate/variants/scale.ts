@@ -12,6 +12,11 @@ export const varScale = (props?: VariantsType) => {
   const easeOut = props?.easeOut;
 
   return {
+    my: {
+      initial: { scaleX: 0, opacity: 0 },
+      animate: { scaleX: 1, opacity: 1, transition: varTranEnter({ durationIn, easeIn }) },
+      exit: { scaleX: 0, opacity: 0, transition: varTranEnter({ durationIn, easeIn }) },
+    },
     // IN
     inX: {
       initial: { scaleX: 0, opacity: 0 },

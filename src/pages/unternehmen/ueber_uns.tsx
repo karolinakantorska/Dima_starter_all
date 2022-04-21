@@ -1,6 +1,11 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+import Layout from 'src/layouts';
 
 const Ueber_unsCom: NextPage = () => {
-  return <p>Ueber_uns</p>
-}
-export default Ueber_unsCom
+  return (
+    <Layout>
+      <p>Ueber_uns</p>
+    </Layout>
+  );
+};
+export default Ueber_unsCom;

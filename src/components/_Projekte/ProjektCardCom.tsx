@@ -12,6 +12,7 @@ import Image from '../../components/Image';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 import { ProjektCardBigCom } from './ProjektCardBigCom';
+import Link from 'next/link';
 
 type MemberCardProps = {
   id: string;
@@ -54,37 +55,38 @@ export function ProjektCardCom({
   return (
     <>
       {big ? (
-        <ProjektCardBigCom member={member} handleClick={handleClick} />
+        <ProjektCardBigCom member={member} />
       ) : (
-        <Box
-          onClick={handleClick}
-          sx={{
-            display: 'grid',
-            gridAutoRows: { gridAutoRows },
-            overflow: 'hidden',
-          }}
-          component={m.div}
-          whileHover="hover"
-        >
-          <Card
-            component={m.div}
-            variants={varHover(1.05)}
-            transition={varTranHover()}
+        <Link href={`/referenz/${id}`}>
+          <Box
             sx={{
-              gridRow: { gridRow },
+              display: 'grid',
+              gridAutoRows: { gridAutoRows },
+              overflow: 'hidden',
             }}
+            component={m.div}
+            whileHover="hover"
           >
-            <Image src={avatar} alt={name} ratio="16/9" />
-          </Card>
-          <Card sx={{ p: 4 }}>
-            <Typography variant="overline" sx={{ mt: 2, mb: 0.5 }}>
-              {name}
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
-              {role}
-            </Typography>
-          </Card>
-        </Box>
+            <Card
+              component={m.div}
+              variants={varHover(1.05)}
+              transition={varTranHover()}
+              sx={{
+                gridRow: { gridRow },
+              }}
+            >
+              <Image src={avatar} alt={name} ratio="16/9" />
+            </Card>
+            <Card sx={{ p: 4 }}>
+              <Typography variant="overline" sx={{ mt: 2, mb: 0.5 }}>
+                {name}
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
+                {role}
+              </Typography>
+            </Card>
+          </Box>
+        </Link>
       )}
     </>
   );

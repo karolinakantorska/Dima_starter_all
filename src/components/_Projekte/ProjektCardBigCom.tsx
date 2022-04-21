@@ -9,6 +9,7 @@ import { varHover, varTranHover } from '../animate';
 import Image from '../Image';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
+import Link from 'next/link';
 
 type MemberCardProps = {
   id: string;
@@ -17,19 +18,12 @@ type MemberCardProps = {
   avatar: string;
 };
 
-export function ProjektCardBigCom({
-  member,
-  handleClick,
-}: {
-  member: MemberCardProps;
-  handleClick: any;
-}) {
+export function ProjektCardBigCom({ member }: { member: MemberCardProps }) {
   const { name, role, avatar, id } = member;
 
   return (
-    <>
+    <Link href={`/referenz/${id}`}>
       <Box
-        onClick={handleClick}
         sx={{
           gridColumn: 'span 3',
           display: 'grid',
@@ -63,6 +57,6 @@ export function ProjektCardBigCom({
         </Card>
         <Card sx={{ p: 4, ml: '-12px', backgroundColor: 'background.default' }} />
       </Box>
-    </>
+    </Link>
   );
 }

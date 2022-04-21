@@ -1,6 +1,11 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+import Layout from 'src/layouts';
 
 const MitarbeiternCom: NextPage = () => {
-  return <p>Mitarbeitern</p>
-}
-export default MitarbeiternCom
+  return (
+    <Layout>
+      <p>Mitarbeitern</p>
+    </Layout>
+  );
+};
+export default MitarbeiternCom;

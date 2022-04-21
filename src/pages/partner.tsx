@@ -1,6 +1,11 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+import Layout from 'src/layouts';
 
 const PartnerCom: NextPage = () => {
-  return <p>Partner</p>
-}
+  return (
+    <Layout>
+      <p>Partner</p>
+    </Layout>
+  );
+};
 export default PartnerCom;

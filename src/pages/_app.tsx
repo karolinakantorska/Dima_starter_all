@@ -1,9 +1,7 @@
 // i18n
 import '../locales/i18n';
-
 // highlight
 import '../utils/highlight';
-
 // scroll bar
 import 'simplebar/src/simplebar.css';
 
@@ -57,7 +55,9 @@ import { ChartStyle } from '../components/chart';
 import ProgressBar from '../components/ProgressBar';
 import NotistackProvider from '../components/NotistackProvider';
 import MotionLazyContainer from '../components/animate/MotionLazyContainer';
+import { AnimatePresence } from 'framer-motion';
 
+import { useRouter } from 'next/router';
 // Check our docs
 // https://docs-minimals.vercel.app/authentication/ts-version
 
@@ -79,7 +79,7 @@ interface MyAppProps extends AppProps {
 
 export default function MyApp(props: MyAppProps) {
   const { Component, pageProps, settings } = props;
-
+  const router = useRouter();
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
@@ -99,7 +99,12 @@ export default function MyApp(props: MyAppProps) {
                       <NotistackProvider>
                         <ChartStyle />
                         <ProgressBar />
-                        {getLayout(<Component {...pageProps} />)}
+                        <AnimatePresence
+                          exitBeforeEnter
+                          //onExitComplete={handleExitComplete}
+                        >
+                          <Component {...pageProps} key={router.route} />
+                        </AnimatePresence>
                       </NotistackProvider>
                     </ThemeSettings>
                   </ThemeProvider>

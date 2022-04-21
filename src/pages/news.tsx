@@ -1,6 +1,11 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+import Layout from 'src/layouts';
 
 const NewsCom: NextPage = () => {
-  return <p>News</p>
-}
+  return (
+    <Layout>
+      <p>News</p>
+    </Layout>
+  );
+};
 export default NewsCom;

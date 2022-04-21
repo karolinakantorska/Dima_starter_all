@@ -1,4 +1,5 @@
 import { useState, ReactNode, useEffect } from 'react';
+import { m } from 'framer-motion';
 // next
 import { useRouter } from 'next/router';
 // @mui
@@ -9,6 +10,9 @@ import AnimationOnStartCom from '../../components/_Animation/AnimationOnStartCom
 //
 import MainFooter from './MainFooter';
 import MainHeader from './MainHeader';
+import { AnimatePresence } from 'framer-motion';
+import { varFade, varScale, MotionViewport } from '../../components/animate';
+import { _MyMotionViewport } from '../../components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -16,25 +20,28 @@ type Props = {
   children: ReactNode;
 };
 
+const variants = {
+  initial: { scaleX: 0, opacity: 0 },
+  animate: { scaleX: 1, opacity: 1 },
+  exit: { scaleX: 0, opacity: 0 },
+};
 export default function MainLayout({ children }: Props) {
-  const [show, setShow] = useState(true);
+  //const [show, setShow] = useState(true);
   const { pathname } = useRouter();
   const isHome = pathname === '/';
   const isOneProject = pathname.includes('/referenz/');
 
-  useEffect(() => {
-    if (isOneProject) {
-      setShow((show) => !show);
-    }
-  }, []);
   return (
     <>
-      {isOneProject && <AnimationOnStartCom show={show}></AnimationOnStartCom>}
-      <Stack sx={{ minHeight: 1 }}>
-        <MainHeader />
-        {children}
-        <Box sx={{ flexGrow: 1 }} />
-      </Stack>
+      <Container component={_MyMotionViewport}>
+        <AnimatePresence exitBeforeEnter>
+          <Stack component={m.div} variants={varScale().my} sx={{ minHeight: 1 }}>
+            <MainHeader />
+            {children}
+            <Box sx={{ flexGrow: 1 }} />
+          </Stack>
+        </AnimatePresence>
+      </Container>
     </>
   );
 }
@@ -61,3 +68,14 @@ export default function MainLayout({ children }: Props) {
         </Box>
       )}
       */
+/*
+
+        <Container component={MotionViewport}>
+          <Stack component={m.div} variants={varScale().inX} sx={{ minHeight: 1 }}>
+            <MainHeader />
+            {children}
+            <Box sx={{ flexGrow: 1 }} />
+          </Stack>
+        </Container>
+
+*/
