@@ -13,17 +13,24 @@ type Props = {
   children: ReactNode;
 };
 
-export default function AnimationOnLandingLayout({ children }: Props) {
-  const [show, setShow] = useState(true);
+export default function AnimationOnRouteChange({ children }: Props) {
+  const [show, setShow] = useState(false);
   const { pathname } = useRouter();
   const router = useRouter();
   const timeout = 400;
   const easing = { enter: 'linear', exit: 'linear' };
   const easing2 = { enter: 'cubic-bezier(0, 1.5, .8, 1)', exit: 'cubic-bezier(0, 1.5, .8, 1)' };
 
-  useEffect(() => {
+  function routeChangeFunction() {
     setShow((show) => !show);
+  }
+  useEffect(() => {
+    router.events.on('routeChangeStart', routeChangeFunction);
+    return () => {
+      router.events.off('routeChangeStart', routeChangeFunction);
+    };
   }, []);
+
   return (
     <>
       <Slide direction="right" in={show} appear={false} timeout={timeout} easing={easing}>

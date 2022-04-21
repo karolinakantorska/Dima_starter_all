@@ -61,6 +61,7 @@ export function ProjektCardBigCom({
             {role}
           </Typography>
         </Card>
+        <Card sx={{ p: 4, ml: '-12px', backgroundColor: 'background.default' }} />
       </Box>
     </>
   );
