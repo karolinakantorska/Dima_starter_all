@@ -8,19 +8,21 @@ import Typography from '@mui/material/Typography';
 import { varHover, varTranHover } from '../animate';
 import Image from '../Image';
 // hooks
-import useResponsive from '../../hooks/useResponsive';
 import Link from 'next/link';
+import { TextCardCom } from './textCardCom';
+import { ProjectType } from 'src/utils/TS/interface';
 
-type MemberCardProps = {
-  id: string;
-  name: string;
-  role: string | undefined;
-  avatar: string;
-};
-
-export function ProjektCardBigCom({ member }: { member: MemberCardProps }) {
-  const { name, role, avatar, id } = member;
-
+export function ProjektCardBigCom({
+  project,
+  rewerseBig,
+}: {
+  project: ProjectType;
+  rewerseBig: boolean;
+}) {
+  const { id, photo } = project;
+  const gridColumn = () => (rewerseBig ? '2/span 2' : '1/span 2');
+  const mr = () => (rewerseBig ? '0px' : '-12px');
+  const ml = () => (rewerseBig ? '-12px' : '0px');
   return (
     <Link href={`/referenz/${id}`}>
       <Box
@@ -41,21 +43,16 @@ export function ProjektCardBigCom({ member }: { member: MemberCardProps }) {
           variants={varHover(1.05)}
           transition={varTranHover()}
           sx={{
-            gridColumn: 'span 2',
+            gridColumn: gridColumn,
             gridRow: 'span 2',
+            ml: ml,
+            mr: mr,
           }}
         >
-          <Image src={avatar} alt={name} ratio="16/9" />
+          <Image src={photo.url} alt={photo.alt} ratio="6/4" />
         </Card>
-        <Card sx={{ p: 4, ml: '-12px' }}>
-          <Typography variant="overline" sx={{ mt: 2, mb: 0.5 }}>
-            {name}
-          </Typography>
-          <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
-            {role}
-          </Typography>
-        </Card>
-        <Card sx={{ p: 4, ml: '-12px', backgroundColor: 'background.default' }} />
+        <TextCardCom project={project} />
+        <Card sx={{ p: 4, backgroundColor: 'background.default' }} />
       </Box>
     </Link>
   );

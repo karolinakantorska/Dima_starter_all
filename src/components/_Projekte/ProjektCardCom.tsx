@@ -13,49 +13,46 @@ import Image from '../../components/Image';
 import useResponsive from '../../hooks/useResponsive';
 import { ProjektCardBigCom } from './ProjektCardBigCom';
 import Link from 'next/link';
+import { dima, ProjectType } from 'src/utils/TS/interface';
+import { TextCardCom } from './textCardCom';
 
-type MemberCardProps = {
-  id: string;
-  name: string;
-  role: string | undefined;
-  avatar: string;
-};
+/*
 function randomWithProbability() {
   const notRandomNumbers = [0, 0, 0, 0, 0, 0, 10, 1, 1, 1];
   const idx = Math.floor(Math.random() * notRandomNumbers.length);
   return notRandomNumbers[idx];
 }
-
+*/
 export function ProjektCardCom({
-  member,
-  i,
+  project,
   gridRow,
+  big,
+  rewerseBig,
 }: {
-  member: MemberCardProps;
-  i: number;
+  project: ProjectType;
   gridRow: '1' | '2';
+  big: boolean;
+  rewerseBig: boolean;
 }) {
-  const { name, role, avatar, id } = member;
+  const { id, photo } = project;
 
   const router = useRouter();
   const isDesktop = useResponsive('up', 'lg');
   const isSmall = useResponsive('down', 'sm');
-  const random = randomWithProbability();
+  //const random = randomWithProbability();
   const gridAutoRows = isSmall ? '' : '1fr';
+  /*
   let big = false;
   if (isDesktop) {
     if (random) {
       big = true;
     }
   }
-  const handleClick = () => {
-    router.push(`/referenz/${id}`);
-  };
-
+  */
   return (
     <>
       {big ? (
-        <ProjektCardBigCom member={member} />
+        <ProjektCardBigCom project={project} rewerseBig={rewerseBig} />
       ) : (
         <Link href={`/referenz/${id}`}>
           <Box
@@ -75,16 +72,9 @@ export function ProjektCardCom({
                 gridRow: { gridRow },
               }}
             >
-              <Image src={avatar} alt={name} ratio="16/9" />
+              <Image src={photo.url} alt={photo.alt} ratio="6/4" />
             </Card>
-            <Card sx={{ p: 4 }}>
-              <Typography variant="overline" sx={{ mt: 2, mb: 0.5 }}>
-                {name}
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
-                {role}
-              </Typography>
-            </Card>
+            <TextCardCom project={project} />
           </Box>
         </Link>
       )}

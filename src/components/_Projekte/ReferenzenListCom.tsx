@@ -11,6 +11,7 @@ import useResponsive from '../../hooks/useResponsive';
 import { ProjektCardCom } from './ProjektCardCom';
 // _mock_
 import { _carouselsMembers } from '../../_mock/_others';
+import { _mockProjekts } from 'src/_mock/referenzen/referenzen';
 
 export function ReferenzenListCom() {
   const isDesktop = useResponsive('up', 'lg');
@@ -36,18 +37,21 @@ export function ReferenzenListCom() {
           <Box
             display="grid"
             gridTemplateColumns={gtc}
-            gridAutoFlow="dense"
+            //gridAutoFlow="dense"
             columnGap="12px"
             rowGap="20px"
           >
-            {_carouselsMembers.map((member, i) => {
-              const result = i % 2 == 0 ? true : false;
+            {_mockProjekts.map((project, i) => {
+              const divideIn2 = i % 2 == 0 ? true : false;
+              const divideIn4 = (i + 1) % 4 == 0 ? true : false;
+              const divideIn8 = (i + 1) % 8 == 0 ? true : false;
               return (
                 <ProjektCardCom
-                  key={member.id}
-                  member={member}
-                  i={i}
-                  gridRow={isSmall ? '1' : result ? '1' : '2'}
+                  key={project.id}
+                  project={project}
+                  gridRow={divideIn2 ? '1' : '2'}
+                  big={divideIn4 ? true : false}
+                  rewerseBig={divideIn8 ? true : false}
                 />
               );
             })}
