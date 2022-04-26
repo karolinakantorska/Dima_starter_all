@@ -1,22 +1,13 @@
-import { ReactElement } from 'react';
-import { styled } from '@mui/material/styles';
 // layouts
 import AnimatedEndLayout from '../layouts/animated/AnimatedEndLayout';
 // components
 import Page from '../components/Page';
+import { RootStyle } from 'src/components/_Main/RootStyle';
 // _mock_
 import { _carouselsMembers } from '../_mock/_others';
 import { ReferenzenListCom } from 'src/components/_Projekte/ReferenzenListCom';
 
-
-const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(8),
-  [theme.breakpoints.up('md')]: {
-    paddingTop: theme.spacing(11),
-  },
-}));
-
-export default function ReferenzenCom() {
+export default function Referenzen() {
   return (
     <AnimatedEndLayout >
       <Page title="Dima & Partner | Glarus Zurich Arosa">

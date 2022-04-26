@@ -1,11 +1,20 @@
-import type { NextPage } from 'next';
+// components
+import Page from '../../components/Page';
+import { RootStyle } from 'src/components/_Main/RootStyle';
 import Layout from 'src/layouts';
+import { AboutCom } from 'src/components/_Company/AboutCom';
 
-const Ueber_unsCom: NextPage = () => {
+
+export default function UberUns() {
   return (
     <Layout>
-      <p>Ueber_uns</p>
+      <Page title="Dima & Partner | Glarus Zurich Arosa">
+        <RootStyle>
+          <AboutCom />
+        </RootStyle>
+      </Page>
     </Layout>
   );
-};
-export default Ueber_unsCom;
+}
+
+

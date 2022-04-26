@@ -1,11 +1,18 @@
-import type { NextPage } from 'next';
+// components
+import Page from '../../components/Page';
+import { RootStyle } from 'src/components/_Main/RootStyle';
 import Layout from 'src/layouts';
+import { ServiceCom } from 'src/components/_Company/ServiceCom';
 
-const LeistungenCom: NextPage = () => {
+
+export default function Leistungen() {
   return (
     <Layout>
-      <p>Leistungen</p>
+      <Page title="Dima & Partner | Glarus Zurich Arosa">
+        <RootStyle>
+          <ServiceCom />
+        </RootStyle>
+      </Page>
     </Layout>
   );
-};
-export default LeistungenCom;
+} 

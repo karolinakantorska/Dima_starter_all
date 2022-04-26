@@ -51,8 +51,8 @@ export type Regionen = typeof regionenArray[number];
 export const objektAlterArray = ['Newbau', 'Sanierung', 'Wettbewerb', 'Alle'] as const;
 export type ObjektAlter = typeof objektAlterArray[number];
 
-export const phase = ['Entwicklung', 'Plannung', 'Realisierung', 'Alle'] as const;
-export type Phase = typeof phase[number];
+export const phaseArray = ['Entwicklung', 'Plannung', 'Realisierung', 'Alle'] as const;
+export type Phase = typeof phaseArray[number];
 export type ArrayOfPhases = Phase[];
 
 export const objektTypeArray = [

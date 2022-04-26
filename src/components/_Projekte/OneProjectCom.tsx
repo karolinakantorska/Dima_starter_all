@@ -1,82 +1,96 @@
 import { m } from 'framer-motion';
 import { useState, ReactNode, useEffect } from 'react';
 // @mui
-import { styled } from '@mui/material/styles';
-import { Box, Container, Grid, Paper, Typography } from '@mui/material';
-import Stack from '@mui/material/Stack';
-// hooks
-import useSettings from '../../hooks/useSettings';
-
-import useResponsive from '../../hooks/useResponsive';
-// components
-import { ProjektCardCom } from './ProjektCardCom';
-import {
-  varHover,
-  varTranHover,
-  MotionViewport,
-  varScale,
-  varSlide,
-  varFade,
-} from '../../components/animate/';
+import { Box, Container, Grid, Paper, Stack, Typography } from '@mui/material';
 // _mock_
 import { _carouselsMembers, _carouselsExample } from '../../_mock/_others';
+import { ProjectType } from 'src/utils/TS/interface';
 
-const RootStyle = styled('div')(({ theme }) => ({
-  minHeight: '100%',
-  paddingTop: theme.spacing(15),
-  paddingBottom: theme.spacing(10),
-}));
-export function OneProjectCom() {
-  const { themeStretch } = useSettings();
-  const isDesktop = useResponsive('up', 'lg');
-  const isSmall = useResponsive('down', 'sm');
-  const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
-  const [halfScreenWidth, setHalfScreenWidth] = useState(600);
-  useEffect(() => {
-    setHalfScreenWidth(window.screen.width * 0.5);
-  }, []);
+import Image from 'next/image';
+
+export function OneProjectCom({ project }: { project: ProjectType }) {
+  /*
+    const { photo, photos, id, title, description, year, objektAlter, objektType, services, region, phase, client, architect, cooperation, location } = project;
+    */
+  //const { themeStretch } = useSettings();
+  console.log('project: ', project)
   return (
-    <RootStyle>
-      <Container
-        maxWidth={themeStretch ? false : 'xl'}
-        component={MotionViewport}
-        //sx={{ backgroundColor: 'red' }}
+    <Container >
+      {project && <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        spacing={2}
       >
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          spacing={2}
-          //component={m.div}
-          //variants={varScale().inX}
-        >
-          <Grid item>
-            <Typography variant="h6" component="h2" paragraph color="text.secondary">
-              Project Name
-            </Typography>
-            <Typography variant="body1" component="p" paragraph color="text.secondary">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus sapien in nisl
-              pellentesque, vitae consectetur dolor lobortis. Nam lacus risus, accumsan eu gravida
-              a, lacinia blandit nulla. Etiam leo diam, congue id dignissim sed, maximus id lorem.
-              Suspendisse potenti. Phasellus imperdiet volutpat arcu, quis tincidunt metus egestas
-              quis. Aenean et tortor mauris. Praesent at nisl dolor. Pellentesque ut nulla quis leo
-              egestas sollicitudin. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-              Nulla urna lectus, laoreet nec dolor ac, viverra rhoncus lacus. Maecenas vehicula
-              maximus sapien, in faucibus lectus sagittis a. Fusce tristique magna ut urna varius,
-              vel scelerisque magna luctus. Nunc vestibulum odio maximus, pulvinar erat non, euismod
-              ipsum. Suspendisse tincidunt varius mi tincidunt euismod. Sed tincidunt aliquam
-              porttitor.
-            </Typography>
+        <Grid item>
+          <Typography variant="h6" component="h2" paragraph color="dima">
+            {project.title}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Grid
+            container
+            direction="row"
+            justifyContent="space-between"
+          >
+            <Stack direction="column" spacing={2} >
+              <Typography variant="body1" component="p" paragraph color="text.primary">
+                Jahr: <b>{project.year}</b>
+              </Typography>
+              <Typography variant="body1" component="p" paragraph color="text.primary">
+                Lokation: <b>{project.location}</b>
+              </Typography>
+              <Typography variant="body1" component="p" paragraph color="text.primary">
+                Zustand: <b>{project.objektAlter}</b>
+              </Typography>
+              <Typography variant="body1" component="p" paragraph color="text.primary">
+                Type: <b>{project.objektType}</b>
+              </Typography>
+            </Stack>
+            <Stack direction="column" spacing={2} >
+              <Typography variant="body1" component="p" paragraph color="text.primary">
+                Unsere Leistungen:
+              </Typography>
+              {project.services.map((service) => <Typography key={service} variant="body1" component="p" paragraph color="text.primary">
+                <b>{service}</b>
+              </Typography>)}
+            </Stack>
+            <Stack direction="column" spacing={2} >
+              <Typography variant="body1" component="p" paragraph color="text.primary">
+                Bauher: <b>{project.client}</b>
+              </Typography>
+              <Typography variant="body1" component="p" paragraph color="text.primary">
+                Architektur: <b>{project.architect}</b>
+              </Typography>
+              {project.cooperation && <Typography variant="body1" component="p" paragraph color="text.primary">
+                {project.cooperation.service}: <b>{project.cooperation.company}</b>
+              </Typography>}
+            </Stack>
           </Grid>
         </Grid>
-      </Container>
-    </RootStyle>
+        <Grid item>
+          <Grid
+            container
+            justifyContent="center"
+          >
+            <Image
+              src={project.photo.url}
+              alt={project.photo.alt}
+              width='1200px'
+              height='674px'
+            //layout='fill' 
+            />
+          </Grid>
+
+        </Grid>
+        <Grid item>
+          <Typography variant="body1" component="p" paragraph color="text.secondary">
+            {project.description}
+          </Typography>
+        </Grid>
+      </Grid>}
+    </Container>
+
   );
 }
-/*
-        <Box
-          component={m.div}
-          variants={varScale().inX}
-          sx={{ width: 500, height: 500, backgroundColor: 'red' }}
-        />
-*/
+

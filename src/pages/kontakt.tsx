@@ -1,40 +1,20 @@
-import { ReactElement } from 'react';
-import { Container, Grid, Typography } from '@mui/material';
 // layouts
 import Layout from '../layouts';
-// hooks
-import useSettings from '../hooks/useSettings';
 // components
 import Page from '../components/Page';
+import { RootStyle } from 'src/components/_Main/RootStyle';
+import { ContactCom } from 'src/components/_Company/ContactCom';
 
-export default function KontaktCom() {
+
+export default function Kontakt() {
   //const { themeStretch } = useSettings();
 
   return (
     <Layout>
       <Page title="Dima & Partner | Glarus Zurich Arosa">
-        <Container>
-          <Grid container direction="row" justifyContent="center" spacing={4}>
-            <Grid item>
-              <Typography variant="h6" component="h1" paragraph color="#e87b45">
-                Glarus
-              </Typography>
-              <Typography gutterBottom>
-                Gewerbezentrum Holenstein <br />
-                19 8750 Glarus
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="h6" component="h1" paragraph color="#e87b45">
-                Zürich
-              </Typography>
-              <Typography gutterBottom>
-                Grubenstrasse 38 <br />
-                8045 Zürich
-              </Typography>
-            </Grid>
-          </Grid>
-        </Container>
+        <RootStyle>
+          <ContactCom />
+        </RootStyle>
       </Page>
     </Layout>
   );

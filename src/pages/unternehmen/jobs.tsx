@@ -1,29 +1,18 @@
-// @mui
-import { styled } from '@mui/material/styles';
-import Page from 'src/components/Page';
+// components
+import Page from '../../components/Page';
+import { RootStyle } from 'src/components/_Main/RootStyle';
 import Layout from 'src/layouts';
+import { JobsCom } from 'src/components/_Company/JobsCom';
 
-const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(8),
-  [theme.breakpoints.up('md')]: {
-    paddingTop: theme.spacing(11),
-  },
-}));
 
-// ----------------------------------------------------------------------
-
-JobsCom.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout variant="main">{page}</Layout>;
-};
-
-export default function JobsCom() {
+export default function Jobs() {
   return (
     <Layout>
-      <Page title="About us">
+      <Page title="Dima & Partner | Glarus Zurich Arosa">
         <RootStyle>
-          <p>Jobs</p>
+          <JobsCom />
         </RootStyle>
       </Page>
     </Layout>
   );
-}
+} 
