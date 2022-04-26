@@ -51,6 +51,7 @@ export function ReferenzenListCom() {
                   project={project}
                   gridRow={divideIn2 ? '1' : '2'}
                   big={divideIn4 ? true : false}
+                  //big={true}
                   rewerseBig={divideIn8 ? true : false}
                 />
               );

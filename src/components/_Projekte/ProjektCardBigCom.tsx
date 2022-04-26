@@ -49,7 +49,7 @@ export function ProjektCardBigCom({
             mr: mr,
           }}
         >
-          <Image src={photo.url} alt={photo.alt} ratio="6/4" />
+          <Image src={photo.url} alt={photo.alt} ratio="16/9" />
         </Card>
         <TextCardCom project={project} />
         <Card sx={{ p: 4, backgroundColor: 'background.default' }} />
