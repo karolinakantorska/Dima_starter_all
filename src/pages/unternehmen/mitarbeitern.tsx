@@ -2,7 +2,7 @@
 import Page from '../../components/Page';
 import { RootStyle } from 'src/components/_Main/RootStyle';
 import Layout from 'src/layouts';
-import { PeopleCom } from 'src/components/_Company/peopleCom';
+import { PeopleCom } from '../../components/_Company/peopleCom';
 
 
 
