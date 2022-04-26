@@ -411,7 +411,7 @@ export const _mockProjekts: ProjectsListType = [
     location: 'Glarus',
   },
 ];
-
+/*
 const Beispiel: ProjectType = {
   photo: {
     url: `/cover_8.jpg`,
@@ -437,3 +437,4 @@ const Beispiel: ProjectType = {
   location: 'Glarus', // text
 };
 console.log(Beispiel);
+*/

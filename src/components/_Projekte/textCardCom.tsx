@@ -6,7 +6,7 @@ import { ProjectType } from 'src/utils/TS/interface';
 import useResponsive from '../../hooks/useResponsive';
 export function TextCardCom({ project }: { project: ProjectType }) {
   const { title, location } = project;
-  const isDesktop = useResponsive('up', 'lg');
+  const isDesktop = useResponsive('up', 'lm');
   return (
     <Card sx={isDesktop ? { p: 4 } : { p: 1.2 }}>
       <Typography variant="h6" component="h2" sx={{ mt: 2, mb: 0.5 }}>

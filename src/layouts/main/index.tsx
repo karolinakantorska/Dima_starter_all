@@ -20,11 +20,6 @@ type Props = {
   children: ReactNode;
 };
 
-const variants = {
-  initial: { scaleX: 0, opacity: 0 },
-  animate: { scaleX: 1, opacity: 1 },
-  exit: { scaleX: 0, opacity: 0 },
-};
 export default function MainLayout({ children }: Props) {
   //const [show, setShow] = useState(true);
   const { pathname } = useRouter();
@@ -33,14 +28,12 @@ export default function MainLayout({ children }: Props) {
 
   return (
     <>
-      <Container component={_MyMotionViewport}>
-        <AnimatePresence exitBeforeEnter>
-          <Stack component={m.div} variants={varScale().my} sx={{ minHeight: 1 }}>
-            <MainHeader />
-            {children}
-            <Box sx={{ flexGrow: 1 }} />
-          </Stack>
-        </AnimatePresence>
+      <Container >
+        <Stack sx={{ minHeight: 1 }}>
+          <MainHeader />
+          {children}
+          <Box sx={{ flexGrow: 1 }} />
+        </Stack>
       </Container>
     </>
   );

@@ -14,7 +14,7 @@ import { _carouselsMembers } from '../../_mock/_others';
 import { _mockProjekts } from 'src/_mock/referenzen/referenzen';
 
 export function ReferenzenListCom() {
-  const isDesktop = useResponsive('up', 'lg');
+  const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   return (

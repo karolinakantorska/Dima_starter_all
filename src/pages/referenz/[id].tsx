@@ -5,20 +5,20 @@ import Layout from '../../layouts';
 // components
 import Page from '../../components/Page';
 import { OneProjectCom } from 'src/components/_Projekte/OneProjectCom';
+import AnimatedStartLayout from 'src/layouts/animated/AnimatedStartLayout';
 
-Referenz.getLayout = function getLayout(page: ReactElement) {
-  return <Layout variant="animated">{page}</Layout>;
-};
 
 export default function Referenz() {
   const router = useRouter();
   const { id } = router.query;
   console.log('id:', id);
   return (
-    <Layout>
+
+    <AnimatedStartLayout>
       <Page title="Projekte | Dima & Partner | Glarus Zurich Arosa">
         <OneProjectCom />
       </Page>
-    </Layout>
+    </AnimatedStartLayout>
+
   );
 }

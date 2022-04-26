@@ -35,7 +35,7 @@ export function ProjektCardCom({
   rewerseBig: boolean;
 }) {
   const { id, photo } = project;
-  const isDesktop = useResponsive('up', 'lg');
+  const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
   //const random = randomWithProbability();
   const gridAutoRows = isSmall ? '' : '1fr';
@@ -47,7 +47,7 @@ export function ProjektCardCom({
     }
   }
   */
-  console.log('big: ', big)
+
   const gridColumn = () => (rewerseBig ? '2/span 2' : '1/span 2');
   const mr = () => (rewerseBig ? '0px' : '-12px');
   const ml = () => (rewerseBig ? '-12px' : '0px');
@@ -74,49 +74,50 @@ export function ProjektCardCom({
     ml: ml,
     mr: mr,
   }
-  return (
-
-    <Link href={`/referenz/${id}`}>
-      <>
-        {!isDesktop && <Box
-          sx={{ ...boxSmallProps }}
+  return (!isDesktop ?
+    (<Link href={`/referenz/${id}`}>
+      <Box
+        sx={{ ...boxSmallProps }}
+        component={m.div}
+        whileHover="hover"
+      >
+        <Card
           component={m.div}
-          whileHover="hover"
+          variants={varHover(1.05)}
+          transition={varTranHover()}
+          sx={{ ...cardSmallProps }}
         >
-          <Card
-            component={m.div}
-            variants={varHover(1.05)}
-            transition={varTranHover()}
-            sx={{ ...cardSmallProps }}
-          >
-            <Image src={photo.url} alt={photo.alt} ratio="16/9" />
-          </Card>
-          <TextCardCom project={project} />
-
-        </Box>}
-        {isDesktop && <Box
-          sx={big ? {
-            ...boxBigProps
-          } : { ...boxSmallProps }}
-          component={m.div}
-          whileHover="hover"
-        >
-          <Card
-            component={m.div}
-            variants={varHover(1.05)}
-            transition={varTranHover()}
-            sx={big ? {
-              ...cardBigProps
-
-            } : { ...cardSmallProps }}
-          >
-            <Image src={photo.url} alt={photo.alt} ratio="16/9" />
-          </Card>
-          <TextCardCom project={project} />
-          {big && <Card sx={{ p: 4, backgroundColor: 'background.default' }} />}
-        </Box>}
-      </>
+          <Image src={photo.url} alt={photo.alt} ratio="16/9" />
+        </Card>
+        <TextCardCom project={project} />
+      </Box>
     </Link>
+    )
+    :
+    (<Link href={`/referenz/${id}`}>
+      <Box
+        sx={big ? {
+          ...boxBigProps
+        } : { ...boxSmallProps }}
+        component={m.div}
+        whileHover="hover"
+      >
+        <Card
+          component={m.div}
+          variants={varHover(1.05)}
+          transition={varTranHover()}
+          sx={big ? {
+            ...cardBigProps
+
+          } : { ...cardSmallProps }}
+        >
+          <Image src={photo.url} alt={photo.alt} ratio="16/9" />
+        </Card>
+        <TextCardCom project={project} />
+        {big && <Card sx={{ p: 4, backgroundColor: 'background.default' }} />}
+      </Box>
+    </Link>
+    )
   );
 }
 /*
