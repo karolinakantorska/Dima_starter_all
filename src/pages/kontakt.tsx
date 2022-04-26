@@ -7,10 +7,6 @@ import useSettings from '../hooks/useSettings';
 // components
 import Page from '../components/Page';
 
-KontaktCom.getLayout = function getLayout(page: ReactElement) {
-  return <Layout variant="main">{page}</Layout>;
-};
-
 export default function KontaktCom() {
   const { themeStretch } = useSettings();
 

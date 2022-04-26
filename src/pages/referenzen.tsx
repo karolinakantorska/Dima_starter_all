@@ -18,7 +18,7 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 export default function ReferenzenCom() {
   return (
-    < AnimatedEndLayout >
+    <AnimatedEndLayout >
       <Page title="Dima & Partner | Glarus Zurich Arosa">
         <RootStyle>
           <ReferenzenListCom />
