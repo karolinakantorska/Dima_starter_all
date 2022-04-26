@@ -11,9 +11,8 @@ import { varHover, varTranHover } from '../animate';
 import Image from '../../components/Image';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
-import { ProjektCardBigCom } from './ProjektCardBigCom';
 import Link from 'next/link';
-import { dima, ProjectType } from 'src/utils/TS/interface';
+import { ProjectType } from 'src/utils/TS/interface';
 import { TextCardCom } from './textCardCom';
 
 /*
