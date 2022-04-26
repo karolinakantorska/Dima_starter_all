@@ -12,3 +12,9 @@ const breakpoints = {
 };
 
 export default breakpoints;
+
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    lm: true; // adds the `lm` breakpoint
+  }
+}

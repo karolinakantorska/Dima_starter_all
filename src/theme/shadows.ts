@@ -22,7 +22,7 @@ interface CustomShadowOptions {
   error: string;
   //
   card: string;
-  dialog: string;
+  dialog: string; 
   dropdown: string;
 }
 
