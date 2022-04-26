@@ -6,12 +6,10 @@ import { useRouter } from 'next/router';
 import { Box, Link, Container, Typography, Stack } from '@mui/material';
 // components
 import Logo from '../../components/Logo';
-import AnimationOnStartCom from '../../components/_Animation/AnimationOnStartCom';
 //
 import MainFooter from './MainFooter';
 import MainHeader from './MainHeader';
-import { AnimatePresence } from 'framer-motion';
-import { varFade, varScale, MotionViewport } from '../../components/animate';
+
 import { _MyMotionViewport } from '../../components/animate';
 
 // ----------------------------------------------------------------------
