@@ -8,7 +8,7 @@ import useSettings from '../hooks/useSettings';
 import Page from '../components/Page';
 
 export default function KontaktCom() {
-  const { themeStretch } = useSettings();
+  //const { themeStretch } = useSettings();
 
   return (
     <Layout>
