@@ -86,8 +86,7 @@ export type Services = typeof ServicesArray[number];
 export type ArrayOfServicesType = Services[];
 
 export type FilterParams = {
-  objektAlter: ObjektAlter;
-  objektType: ObjektType;
+  phase: Phase;
   services: Services;
 };
 
