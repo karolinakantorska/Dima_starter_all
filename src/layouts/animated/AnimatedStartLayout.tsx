@@ -26,12 +26,12 @@ export default function AnimatedStartLayout({ children }: Props) {
   }, []);
 
   const variantLeft = {
-    initial: { opacity: 1, x: 0 },
-    animate: { opacity: 0, x: -screenWidth * 0.5 },
+    initial: { opacity: 1, x: -screenWidth * 0.25 },
+    animate: { opacity: 0, x: -screenWidth },
     transition: { duration: 1 },
   };
   const variantRight = {
-    initial: { opacity: 1, x: screenWidth * 0.5 },
+    initial: { opacity: 1, x: screenWidth * 0.75 },
     animate: { opacity: 0, x: screenWidth },
     transition: { duration: 1 },
   };
@@ -42,7 +42,7 @@ export default function AnimatedStartLayout({ children }: Props) {
         component={m.div}
         sx={{
           zIndex: 1200,
-          width: '50vw',
+          width: '100vw',
           height: '100vh',
           backgroundColor: 'grey.700',
         }}

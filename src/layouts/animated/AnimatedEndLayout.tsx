@@ -26,13 +26,13 @@ export default function AnimatedEndLayout({ children }: Props) {
   }, []);
 
   const variantLeft = {
-    initial: { opacity: 0, x: -screenWidth * 0.5 },
-    exit: { opacity: 1, x: 0 },
+    initial: { opacity: 0, x: -screenWidth },
+    exit: { opacity: 1, x: -screenWidth * 0.25 },
     transition: { duration: 1 },
   };
   const variantRight = {
     initial: { opacity: 0, x: screenWidth },
-    exit: { opacity: 1, x: screenWidth * 0.5 },
+    exit: { opacity: 1, x: screenWidth * 0.75 },
     transition: { duration: 1 },
   };
   function CoverBox({ variant }: { variant: any }) {
@@ -42,7 +42,7 @@ export default function AnimatedEndLayout({ children }: Props) {
         component={m.div}
         sx={{
           zIndex: 1200,
-          width: '50vw',
+          width: '100vw',
           height: '100vh',
           backgroundColor: 'grey.700',
         }}
