@@ -1,4 +1,4 @@
-export const dima = `DIMA partner | architektur & totalunternehmung`;
+export const dima = `DIMA Partner | Architektur & Totalunternehmung`;
 
 export interface ProjectType {
   photo: ImageType;
@@ -36,7 +36,7 @@ export interface ImageType {
 }
 export type ImagesType = ImageType[];
 
-export type Company = string | typeof dima | typeof cadosch | typeof kgpImmobilien | typeof privat;
+export type Company = string | typeof dima | typeof Cadosch | typeof Kgp_Immobilien | typeof privat;
 
 export const regionenArray = [
   'Glarus',
@@ -48,7 +48,7 @@ export const regionenArray = [
 ] as const;
 export type Regionen = typeof regionenArray[number];
 
-export const objektAlterArray = ['Newbau', 'Sanierung', 'Wettbewerb', 'Alle'] as const;
+export const objektAlterArray = ['Newbau', 'Sanierung', 'Alle'] as const;
 export type ObjektAlter = typeof objektAlterArray[number];
 
 export const phaseArray = ['Entwicklung', 'Plannung', 'Realisierung', 'Alle'] as const;
@@ -97,6 +97,11 @@ export interface UserData {
   uid: string;
 }
 
-export const cadosch = `cadosch & zimmermann gmbh, zürich`;
-export const kgpImmobilien = `kgp immobilien ag, wollerau`;
+export const Cadosch = `Cadosch & Zimmermann GmbH, Zürich`;
+export const Kgp_Immobilien = `KPG Immobilien AG, Wollerau`;
+export const Hanimann_Naef = `Hanimann - Flückiger AG, Egg | Naef Partner AG, Zürich`;
+export const Viste = `VISTE Bautrocknung GmbH, Glarus`;
+export const BSS_M = `BSS&M Real Estate AG, Zurich`
 export const privat = `privat`;
+
+

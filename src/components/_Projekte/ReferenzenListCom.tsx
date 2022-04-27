@@ -7,10 +7,11 @@ import Stack from '@mui/material/Stack';
 
 import useResponsive from '../../hooks/useResponsive';
 // components
-import { ProjektCardCom } from './ProjektCardCom';
+
 // _mock_
-import { _mockProjekts } from 'src/_mock/referenzen/referenzen';
-import { phaseArray, regionenArray } from 'src/utils/TS/interface';
+import { ProjektCardCom } from './ProjektCardCom';
+import { _mockProjekts } from '../../_mock/referenzen/referenzen';
+import { phaseArray, regionenArray } from '../../utils/TS/interface';
 
 export function ReferenzenListCom() {
   const isDesktop = useResponsive('up', 'lm');
@@ -21,6 +22,7 @@ export function ReferenzenListCom() {
   const regions = regionenArray.slice(0, -1);
   return (
     <Container>
+
       <Grid container direction="column" justifyContent="center" spacing={2}>
         <Grid item>
           <Stack direction="row" spacing={2} justifyContent="center">
@@ -51,6 +53,7 @@ export function ReferenzenListCom() {
               const divideIn4 = (i + 1) % 4 == 0 ? true : false;
               const divideIn8 = (i + 1) % 8 == 0 ? true : false;
               return (
+
                 <ProjektCardCom
                   key={project.id}
                   project={project}

@@ -14,7 +14,8 @@ import useResponsive from '../../hooks/useResponsive';
 import Link from 'next/link';
 import { ProjectType } from 'src/utils/TS/interface';
 import { TextCardCom } from './textCardCom';
-
+// utils
+import { firstLettersBig } from '../../utils/Text/textUtils';
 /*
 function randomWithProbability() {
   const notRandomNumbers = [0, 0, 0, 0, 0, 0, 10, 1, 1, 1];
