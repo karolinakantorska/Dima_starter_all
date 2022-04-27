@@ -34,7 +34,9 @@ export default function AnimatedEndLayout({ children }: Props) {
   const variantRight = {
     initial: { opacity: 1, x: screenWidth },
     //animate: { opacity: 1, x: screenWidth },
-    exit: { opacity: 1, x: screenWidth * 0.5 },
+    exit: {
+      opacity: 1, x: screenWidth * 0.5
+    },
     transition: { duration: 1 },
   };
   function CoverBox({ variant }: { variant: any }) {

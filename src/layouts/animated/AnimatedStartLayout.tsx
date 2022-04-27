@@ -27,11 +27,13 @@ export default function AnimatedStartLayout({ children }: Props) {
 
   const variantLeft = {
     initial: { opacity: 1, x: 0 },
-    animate: { opacity: 1, x: -screenWidth * 0.5 },
+    animate: { opacity: 1, x: -screenWidth },
     transition: { duration: 1 },
   };
   const variantRight = {
-    initial: { opacity: 1, x: screenWidth * 0.5 },
+    initial: {
+      opacity: 1, x: screenWidth * 0.5
+    },
     animate: { opacity: 1, x: screenWidth },
     transition: { duration: 1 },
   };
