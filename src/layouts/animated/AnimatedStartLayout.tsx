@@ -22,17 +22,17 @@ export default function AnimatedStartLayout({ children }: Props) {
   const isHome = pathname === '/';
   const isOneProject = pathname.includes('/referenz/');
   useEffect(() => {
-    setScreenWidth(window.screen.width * 0.5);
+    setScreenWidth(window.screen.width);
   }, []);
 
   const variantLeft = {
     initial: { opacity: 1, x: 0 },
-    animate: { opacity: 1, x: -screenWidth },
+    animate: { opacity: 1, x: -screenWidth * 0.5 },
     transition: { duration: 1 },
   };
   const variantRight = {
-    initial: { opacity: 1, x: screenWidth },
-    animate: { opacity: 1, x: screenWidth * 2 },
+    initial: { opacity: 1, x: screenWidth * 0.5 },
+    animate: { opacity: 1, x: screenWidth },
     transition: { duration: 1 },
   };
   function CoverBox({ variant }: { variant: any }) {
@@ -44,7 +44,7 @@ export default function AnimatedStartLayout({ children }: Props) {
           zIndex: 1200,
           width: '50vw',
           height: '100vh',
-          backgroundColor: 'grey.0',
+          backgroundColor: 'grey.700',
         }}
         {...variant}
       />
