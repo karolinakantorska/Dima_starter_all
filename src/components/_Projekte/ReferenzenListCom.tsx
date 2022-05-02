@@ -44,7 +44,6 @@ export function ReferenzenListCom() {
   }, [inputs])
   const MyRadio = ({ text }: { text: string }) => (
     <FormControlLabel
-
       value={text}
       control={<Radio
         icon={
@@ -81,7 +80,6 @@ export function ReferenzenListCom() {
     />)
   const MyRadioReset = () => (
     <FormControlLabel
-      sx={{}}
       value={'Alle'}
       control={<Radio
         icon={
