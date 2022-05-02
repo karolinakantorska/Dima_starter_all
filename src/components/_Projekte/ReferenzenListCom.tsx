@@ -1,26 +1,28 @@
 import { useState, ReactNode, useEffect } from 'react';
-// @mui
-import { styled } from '@mui/material/styles';
-import { Box, Container, Grid, Typography } from '@mui/material';
-import Stack from '@mui/material/Stack';
-// hooks
-import useResponsive from '../../hooks/useResponsive';
-// components
-
-// _mock_
-import { ProjektCardCom } from './ProjektCardCom';
-import { _mockProjekts } from '../../_mock/referenzen/referenzen';
 import { phaseArray, regionenArray, FilterParams } from '../../utils/TS/interface';
+// @mui
+import { Box, Container, Grid, Typography } from '@mui/material';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
+// hooks
+import useResponsive from '../../hooks/useResponsive';
+// components
+import { ProjektCardCom } from './ProjektCardCom';
+// Icons
 import CropSquareRoundedIcon from '@mui/icons-material/CropSquareRounded';
 import SquareRoundedIcon from '@mui/icons-material/SquareRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+// _mock_
+import { _mockProjekts } from '../../_mock/referenzen/referenzen';
+// utils
 import { useForm } from 'src/utils/myUtils/useForm';
 import { filter } from 'src/utils/myUtils/filterFunction';
+import MaxWidthDialog from '../../sections/overview/mui/dialog/MaxWidthDialog';
 
 
 export function ReferenzenListCom() {
+  const initialInputs = { param: "Alle" }
   const [sorted, setSorted] = useState(false);
   const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
@@ -29,53 +31,98 @@ export function ReferenzenListCom() {
   const phase = phaseArray.slice(0, -1);
   const regions = regionenArray.slice(0, -1);
 
-  const initialParams: FilterParams = {
-    phase: "Alle",
-    services: "Alle",
-  }
-  const { inputs, handleInputChange, } = useForm(initialParams);
-  console.log('inputs: ', inputs)
+  const { inputs, handleInputChange, resetInputs } = useForm({ param: "Alle" });
+
   const filteredProjects = filter(_mockProjekts, inputs);
   //const filteredProjects = _mockProjekts;
+  // console.log('inputs', inputs)
+  // console.log('filteredProjects', filteredProjects)
   useEffect(() => {
-    if (inputs !== initialParams) {
+    if (inputs.param !== initialInputs.param) {
       setSorted(true);
     }
-
   }, [inputs])
   const MyRadio = ({ text }: { text: string }) => (
     <FormControlLabel
-      key={text}
+
       value={text}
       control={<Radio
-        icon={<CropSquareRoundedIcon sx={{ height: 12 }} />}
-        checkedIcon={<SquareRoundedIcon sx={{ height: 12 }} />}
+        icon={
+          <CropSquareRoundedIcon
+            sx={{
+              height: 12
+            }}
+          />
+        }
+        checkedIcon={
+          <SquareRoundedIcon
+            sx={{
+              height: 12
+            }}
+          />
+        }
       />}
-      label={<Typography variant="overline" component="span" color="text.secondary" >{text}</Typography>}
+      label={
+        <Typography
+          variant="overline"
+          component="span"
+          color={
+            text === inputs.param
+              ? 'dima'
+              : 'text.secondary'
+          }
+          sx={{
+            ml: -1.1,
+          }}
+        >
+          {text}
+        </Typography>
+      }
     />)
-
+  const MyRadioReset = () => (
+    <FormControlLabel
+      sx={{}}
+      value={'Alle'}
+      control={<Radio
+        icon={
+          <CloseRoundedIcon />
+        }
+        checkedIcon={
+          <CloseRoundedIcon />
+        }
+      />}
+      label=''
+    />)
   return (
-    <Container>
-      <Grid container direction="column" justifyContent="center" spacing={2}>
-        <Stack direction="row" spacing={2} justifyContent="center">
-          <RadioGroup
-            row
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue={false}
-            onChange={handleInputChange}
-            name="phase"
-          >
-            {phase.map((ph) => <MyRadio text={ph} />)}
-            {sorted && <MyRadio text='Alle' />}
-          </RadioGroup>
-        </Stack>
-        <Stack direction="row" spacing={2} justifyContent="center">
-          {regions.map((region) =>
-            <Typography key={region} variant="overline" component="p" paragraph color="text.secondary">
-              {region}
-            </Typography>
-          )}
-        </Stack>
+    <Container >
+      <Grid container direction="column" justifyContent="center" spacing={2} sx={{
+        mt: 0
+      }}>
+        <Grid container direction="row" justifyContent="center" spacing={2} sx={{
+          mt: 0
+        }}>
+          <Grid item>
+            <RadioGroup
+              row
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue={false}
+              onChange={handleInputChange}
+              name="param"
+              sx={{ maxWidth: 450 }}
+            >
+              <Grid container direction="row" justifyContent="space-between">
+                {phase.map((ph) => <MyRadio text={ph} key={ph} />)}
+                {sorted && <MyRadioReset />}
+              </Grid>
+              <Grid container direction="row" justifyContent="space-between">
+                {regions.map((region) => <MyRadio text={region} key={region} />)}
+              </Grid>
+            </RadioGroup>
+          </Grid>
+          <Grid item>
+
+          </Grid>
+        </Grid>
 
         <Grid item>
           <Box
@@ -90,7 +137,6 @@ export function ReferenzenListCom() {
               const divideIn4 = (i + 1) % 4 == 0 ? true : false;
               const divideIn8 = (i + 1) % 8 == 0 ? true : false;
               return (
-
                 <ProjektCardCom
                   key={project.id}
                   project={project}
@@ -103,7 +149,8 @@ export function ReferenzenListCom() {
             })}
           </Box>
         </Grid>
-      </Grid>
+      </Grid >
     </Container >
+
   );
 }

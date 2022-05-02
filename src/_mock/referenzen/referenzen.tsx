@@ -265,7 +265,7 @@ export const _mockProjekts: ProjectsListType = [
     objektType: ['Büro'],
     services: ['GP'],
     timeStamp: 1,
-    region: 'Andere',
+    region: 'Andere Regionen',
     phase: ['Realisierung'],
     client: 'Asga Pensionskasse St. Gallen',
     gu: '',
@@ -291,7 +291,7 @@ export const _mockProjekts: ProjectsListType = [
     objektType: ['Büro'],
     services: ['GP', 'Kostenmenagement'],
     timeStamp: 1,
-    region: 'Innerschweiz',
+    region: 'Andere Regionen',
     phase: ['Plannung'],
     client: BSS_M,
     gu: '',
@@ -318,7 +318,7 @@ export const _mockProjekts: ProjectsListType = [
     objektType: ['MFH'],
     services: ['TU', 'Bauleitung'],
     timeStamp: 1,
-    region: 'Innerschweiz',
+    region: 'Andere Regionen',
     phase: ['Realisierung'],
     client: 'Peikert Immobilien AG, Zug + 4B Immobilien AG',
     gu: '',
@@ -430,7 +430,7 @@ const Beispiel: ProjectType = {
   objektType: ['MFH'], // mehrere von: 'MFH','Gewerbe','Büro','EFH','Gesundheits','Sport','Multifunktional',
   services: ['Architektur', 'Bauleitung'], // mehrere von:  'TU','Bauleitung','Architektur','GP','Wettbewerb','Käuferbetreuung','Ausführungsplanung','Studien','Mangelmenagement','Kostenmenagement','Submision',
   timeStamp: 1,
-  region: 'Glarus', //  eine von:  "Zürich" | "Glarus" | "Arosa" | "Andere"
+  region: 'Glarus', //  eine von:  "Zürich" | "Glarus" | "Arosa" | "Andere Regionen"
   phase: ['Realisierung'], // mehrere von: 'Entwicklung', 'Plannung', 'Realisierung'
   client: 'gemeinde glarus', // text
   gu: dima, // text

@@ -42,8 +42,7 @@ export const regionenArray = [
   'Glarus',
   'Zürich',
   'Arosa',
-  'Innerschweiz',
-  'Andere',
+  'Andere Regionen',
   'Alle',
 ] as const;
 export type Regionen = typeof regionenArray[number];
@@ -87,7 +86,7 @@ export type ArrayOfServicesType = Services[];
 
 export type FilterParams = {
   phase: Phase;
-  services: Services;
+  region: Regionen;
 };
 
 export type User = UserData | null;

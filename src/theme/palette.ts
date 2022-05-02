@@ -178,7 +178,7 @@ const palette = {
     text: { primary: '#fff', secondary: GREY[500], disabled: GREY[600] },
     background: { paper: GREY[800], default: GREY[900], neutral: GREY[500_16] },
     action: { active: GREY[500], ...COMMON.action },
-    dima:PRIMARY.main
+    dima:PRIMARY.main 
   },
 } as const;
 
