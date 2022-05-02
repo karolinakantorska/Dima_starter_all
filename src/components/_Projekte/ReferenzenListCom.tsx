@@ -89,7 +89,7 @@ export function ReferenzenListCom() {
           <CloseRoundedIcon />
         }
       />}
-      label=''
+      label={false}
     />)
   return (
     <Container >
