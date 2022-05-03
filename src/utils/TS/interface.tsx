@@ -14,7 +14,7 @@ export interface ProjectType {
   region: Regionen;
   phase: ArrayOfPhases;
   client: string;
-  gu: Company;
+  size: number;
   architect: Company;
   cooperation?: {
     service: Services | string;

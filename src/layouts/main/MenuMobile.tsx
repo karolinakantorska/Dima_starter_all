@@ -38,8 +38,8 @@ interface ListItemStyleProps extends StyleProps {
 
 const ListItemStyle = styled(ListItemButton)<ListItemStyleProps>(({ theme }) => ({
   ...theme.typography.body2,
-  
-  marginTop:0,
+
+  marginTop: 0,
   height: NAVBAR.DASHBOARD_ITEM_ROOT_HEIGHT,
   textTransform: 'capitalize',
   color: theme.palette.text.secondary,
@@ -77,6 +77,7 @@ export default function MenuMobile({ isOffset, isHome, navConfig }: MenuProps) {
         onClick={handleDrawerOpen}
         sx={{
           ml: 1,
+          pr: 0,
           ...(isHome && { color: 'common.white' }),
           ...(isOffset && { color: 'text.primary' }),
         }}
@@ -92,7 +93,7 @@ export default function MenuMobile({ isOffset, isHome, navConfig }: MenuProps) {
         PaperProps={{ sx: { pb: 5, width: 260 } }}
       >
         <Scrollbar>
-        <Stack height="100px" direction="row" alignItems="center" justifyContent="flex-end">
+          <Stack height="100px" direction="row" alignItems="center" justifyContent="flex-end">
             <p>close icon</p>
           </Stack>
 

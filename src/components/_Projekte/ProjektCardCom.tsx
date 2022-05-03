@@ -48,7 +48,7 @@ export function ProjektCardCom({
   }
   */
 
-  const gridColumn = () => (rewerseBig ? '2/span 2' : '1/span 2');
+  const gridColumn = () => (rewerseBig ? '3/span 3' : '1/span 3');
   const mr = () => (rewerseBig ? '0px' : '-12px');
   const ml = () => (rewerseBig ? '-12px' : '0px');
   const boxSmallProps = {
@@ -60,8 +60,8 @@ export function ProjektCardCom({
     gridColumn: 'span 3',
     display: 'grid',
     gridAutoFlow: 'column',
-    gridTemplateColumns: ' 1fr 1fr 1fr',
-    columnGap: '12px',
+    gridTemplateColumns: ' 1fr 12px 1fr 12px 1fr',
+    columnGap: '0px',
     gridAutoRows: 'repeat(2, 1fr)',
     overflow: 'hidden',
   }
@@ -71,8 +71,8 @@ export function ProjektCardCom({
   const cardBigProps = {
     gridColumn: gridColumn,
     gridRow: 'span 2',
-    ml: ml,
-    mr: mr,
+    //ml: ml,
+    //mr: mr,
   }
   return (!isDesktop ?
     (<Link href={`/referenz/${id}`}>
@@ -108,13 +108,12 @@ export function ProjektCardCom({
           transition={varTranHover()}
           sx={big ? {
             ...cardBigProps
-
           } : { ...cardSmallProps }}
         >
           <Image src={photo.url} alt={photo.alt} ratio="16/9" />
         </Card>
-        <TextCardCom project={project} />
-        {big && <Card sx={{ p: 4, backgroundColor: 'background.default' }} />}
+        <TextCardCom project={project} ml={ml} mr={mr} big={big} rewerseBig={rewerseBig} />
+
       </Box>
     </Link>
     )

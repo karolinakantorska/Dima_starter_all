@@ -11,7 +11,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
     */
   //const { themeStretch } = useSettings();
   return (
-    <Container >
+    <Container disableGutters={true}>
       {project &&
         <Grid
           container
@@ -31,7 +31,7 @@ export function OneProjectCom({ project }: { project: ProjectType }) {
                     `${writeObiektTypeInGerman(type)}${(i + 1 === project.objektType.length)
                       ? ', '
                       : ' und '}`)}
-                  {project.objektAlter}
+                  {project.objektAlter}, {project.size}&#13217;
                 </Typography>
               </Typography>
             </Grid>

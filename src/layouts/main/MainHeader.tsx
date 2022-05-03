@@ -75,18 +75,18 @@ export default function MainHeader() {
           <Box sx={{ flexGrow: 1 }} />
           {isUpToMiddleScreen && (
             <>
-            <MenuDesktop 
-          isOffset={isOffset} 
-          isHome={isHome} 
-          navConfig={menuConfigMain} 
-          />
-          <MenuMobile 
-          isOffset={isOffset} 
-          isHome={isHome} 
-          navConfig={menuConfigSecond} />
+              <MenuDesktop
+                isOffset={isOffset}
+                isHome={isHome}
+                navConfig={menuConfigMain}
+              />
+              <MenuMobile
+                isOffset={isOffset}
+                isHome={isHome}
+                navConfig={menuConfigSecond} />
             </>
-          )          }
-     {!isUpToMiddleScreen && <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={[...menuConfigMain, ...menuConfigSecond]} />}
+          )}
+          {!isUpToMiddleScreen && <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={[...menuConfigMain, ...menuConfigSecond]} />}
         </Container>
       </ToolbarStyle>
 
