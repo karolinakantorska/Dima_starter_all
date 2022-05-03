@@ -18,7 +18,7 @@ import { FilterReferenzenCom } from './FilterReferenzenCom';
 export function ReferenzenListCom() {
   const initialInputs = { param: "Alle" }
   const [sorted, setSorted] = useState(false);
-  const isDesktop = useResponsive('up', 'lg');
+  const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
 
@@ -63,8 +63,8 @@ export function ReferenzenListCom() {
                   key={project.id}
                   project={project}
                   gridRow={divideIn2 ? '1' : '2'}
-                  //big={divideIn4 ? true : false}
-                  big={true}
+                  big={divideIn4 ? true : false}
+                  //big={false}
                   rewerseBig={divideIn8 ? true : false}
                 />
               );

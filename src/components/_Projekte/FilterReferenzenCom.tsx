@@ -13,6 +13,8 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 // _mock_
 import { _mockProjekts } from '../../_mock/referenzen/referenzen';
 
+import useResponsive from '../../hooks/useResponsive';
+// TODO 450px down another component
 
 interface Props {
     sorted: boolean,
@@ -22,25 +24,12 @@ interface Props {
 export function FilterReferenzenCom({ sorted, inputs, handleInputChange, }: Props) {
     const phase = phaseArray.slice(0, -1);
     const regions = regionenArray.slice(0, -1);
-
     const MyRadio = ({ text }: { text: Phase | Regionen }) => (
         <FormControlLabel
             value={text}
             control={<Radio
-                icon={
-                    <CropSquareRoundedIcon
-                        sx={{
-                            height: 12
-                        }}
-                    />
-                }
-                checkedIcon={
-                    <SquareRoundedIcon
-                        sx={{
-                            height: 12
-                        }}
-                    />
-                }
+                icon={<CropSquareRoundedIcon sx={{ height: 12 }} />}
+                checkedIcon={<SquareRoundedIcon sx={{ height: 12 }} />}
             />}
             label={
                 <Typography
@@ -64,29 +53,22 @@ export function FilterReferenzenCom({ sorted, inputs, handleInputChange, }: Prop
         <FormControlLabel
             value={'Alle'}
             control={<Radio
-                icon={
-                    <CloseRoundedIcon />
-                }
-                checkedIcon={
-                    <CloseRoundedIcon />
-                }
+                icon={<CloseRoundedIcon />}
+                checkedIcon={<CloseRoundedIcon />}
             />}
             label={false}
         />)
     return (
-        <Grid container direction="row" justifyContent="center" spacing={2} sx={{
-            mt: 0
-        }}>
+        <Grid container direction="row" justifyContent="center" sx={{ mt: 0 }}>
             <Grid item>
                 <RadioGroup
-                    row
                     aria-labelledby="demo-radio-buttons-group-label"
                     defaultValue={false}
                     onChange={handleInputChange}
                     name="param"
-                    sx={{ maxWidth: 450 }}
+                    sx={{ maxWidth: 450, pl: 1.27, pr: 1.27 }}
                 >
-                    <Grid container direction="row" justifyContent="space-between">
+                    <Grid container direction="row" justifyContent="space-between" >
                         {phase.map((ph) => <MyRadio text={ph} key={ph} />)}
                         {sorted && <MyRadioReset />}
                     </Grid>
@@ -94,7 +76,7 @@ export function FilterReferenzenCom({ sorted, inputs, handleInputChange, }: Prop
                         {regions.map((region) => <MyRadio text={region} key={region} />)}
                     </Grid>
                 </RadioGroup>
-            </Grid>
-        </Grid>
+            </Grid >
+        </Grid >
     );
 }

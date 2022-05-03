@@ -7,8 +7,7 @@ import useResponsive from '../../hooks/useResponsive';
 import { firstLettersBig } from '../../utils/Text/textUtils';
 import { Box } from '@mui/system';
 
-export function TextCardCom({ project, ml,
-  mr, big, rewerseBig }: { project: ProjectType }) {
+export function TextCardCom({ project, big, rewerseBig }: { project: ProjectType, big: boolean, rewerseBig: boolean }) {
   const { title, location } = project;
   const isDesktop = useResponsive('up', 'lm');
 
@@ -17,30 +16,59 @@ export function TextCardCom({ project, ml,
   }
 
   const cardPropsBig = {
-    gridColumn: big ? rewerseBig ? '1 / span 1' : '5 / span 1' : 'span 1',
+    gridColumn: rewerseBig ? '1 / span 2' : '4 / span 2',
+    gridRow: 'span 2',
+    backgroundColor: 'background.default'
   }
-
-  return (
+  const TextBox = () => (
+    <Box sx={big && { backgroundColor: 'background.paper', p: 4, minHeight: '300px' }}>
+      <Typography variant="h6" component="h2" sx={{
+        mt: 2, mb: 0.5,
+      }}>
+        {firstLettersBig(title)}
+      </Typography>
+      <Typography variant="overline" component="h6" sx={{ mb: 2, color: 'text.secondary', }}>
+        {location}
+      </Typography>
+    </Box>
+  )
+  return (!isDesktop ?
+    <Card sx={{ ...cardProps }}  >
+      <Box >
+        <Typography variant="h6" component="h2" sx={{
+          mt: 2, mb: 0.5,
+        }}>
+          {firstLettersBig(title)}
+        </Typography>
+        <Typography variant="overline" component="h6" sx={{ mb: 2, color: 'text.secondary', }}>
+          {location}
+        </Typography>
+      </Box>
+    </Card>
+    :
     <>
-      <Card sx={{ ...cardProps, ...cardPropsBig }}  >
-        <Box sx={{ backgroundColor: 'red', }}>
-          <Typography variant="h6" component="h2" sx={{
-            mt: 2, mb: 0.5,
-          }}>
-            {firstLettersBig(title)}
-          </Typography>
-          <Typography variant="overline" component="h6" sx={{ mb: 2, color: 'text.secondary', }}>
-            {location}
-          </Typography>
-        </Box>
-        <Box>
-        </Box>
-      </Card>
-      {
-        big && <Card sx={{
-          backgroundColor: 'background.default',
-          gridColumn: 'span 2'
-        }} />
+      {!big &&
+        <Card sx={{ ...cardProps }}  >
+          <TextBox />
+        </Card>
+      }
+      {big &&
+        <Card sx={big ? { ...cardPropsBig } : { ...cardProps }} >
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: rewerseBig ? '1fr 12px' : '12px 1fr',
+            }}
+          >
+            {big && <Box sx={{
+              backgroundColor: 'background.default',
+              gridRow: 'span 2',
+              gridColumn: rewerseBig ? '2' : '1',
+            }}>
+            </Box>}
+            <TextBox />
+          </Box>
+        </Card>
       }
     </>
 
