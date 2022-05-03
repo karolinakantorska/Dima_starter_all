@@ -51,6 +51,11 @@ export function ProjektCardCom({
     gridColumn: gridColumn,
     gridRow: 'span 2',
   }
+  const variantUp = {
+    initial: { height: '1vh' },
+    animate: { scaleY: 100 },
+    transition: { duration: 5 },
+  };
   return (!isDesktop ?
     (<Link href={`/referenz/${id}`}>
       <Box
@@ -71,27 +76,37 @@ export function ProjektCardCom({
     </Link>
     )
     :
-    (<Link href={`/referenz/${id}`}>
-      <Box
-        sx={big ? {
-          ...boxBigProps
-        } : { ...boxSmallProps }}
-        component={m.div}
-        whileHover="hover"
-      >
-        <Card
+    (
+      <>{big && (
+        <Box
           component={m.div}
-          variants={varHover(1.05)}
-          transition={varTranHover()}
-          sx={big ? {
-            ...cardBigProps
-          } : { ...cardSmallProps }}
-        >
-          <Image src={photo.url} alt={photo.alt} ratio="16/9" />
-        </Card>
-        <TextCardCom project={project} big={big} rewerseBig={rewerseBig} />
-      </Box>
-    </Link>
+          {...variantUp}
+          sx={{ backgroundColor: 'dima', zIndex: 1200, }}>
+          <p>hallo</p>
+        </Box>)}
+        <Link href={`/referenz/${id}`}>
+          <Box
+            sx={big ? {
+              ...boxBigProps
+            } : { ...boxSmallProps }}
+            component={m.div}
+            whileHover="hover"
+          >
+            <Card
+              component={m.div}
+              variants={varHover(1.05)}
+              transition={varTranHover()}
+              sx={big ? {
+                ...cardBigProps
+              } : { ...cardSmallProps }}
+            >
+              <Image src={photo.url} alt={photo.alt} ratio="16/9" />
+            </Card>
+            <TextCardCom project={project} big={big} rewerseBig={rewerseBig} />
+          </Box>
+        </Link>
+      </>
+
     )
   );
 }
