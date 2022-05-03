@@ -1,72 +1,78 @@
 import { useState, ReactNode, useEffect } from 'react';
-// @mui
-import { styled } from '@mui/material/styles';
-import { Box, Container, Grid, Typography } from '@mui/material';
-import Stack from '@mui/material/Stack';
-// hooks
 
+// @mui
+import { Box, Container, Grid, Typography } from '@mui/material';
+
+// hooks
 import useResponsive from '../../hooks/useResponsive';
 // components
+import { ProjektCardCom } from './ProjektCardCom';
 
 // _mock_
-import { ProjektCardCom } from './ProjektCardCom';
 import { _mockProjekts } from '../../_mock/referenzen/referenzen';
-import { phaseArray, regionenArray } from '../../utils/TS/interface';
+// utils
+import { useForm } from 'src/utils/myUtils/useForm';
+import { filter } from 'src/utils/myUtils/filterFunction';
+import { FilterReferenzenCom } from './FilterReferenzenCom';
 
 export function ReferenzenListCom() {
+  const initialInputs = { param: "Alle" }
+  const [sorted, setSorted] = useState(false);
   const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
 
-  const phase = phaseArray.slice(0, -1);
-  const regions = regionenArray.slice(0, -1);
-  return (
-    <Container>
+  const { inputs, handleInputChange, } = useForm({ param: "Alle" });
 
-      <Grid container direction="column" justifyContent="center" spacing={2}>
-        <Grid item>
-          <Stack direction="row" spacing={2} justifyContent="center">
-            {phase.map((ph) =>
-              <Typography key={ph} variant="overline" component="p" paragraph color="text.secondary">
-                {ph}
-              </Typography>
-            )}
-          </Stack>
-          <Stack direction="row" spacing={2} justifyContent="center">
-            {regions.map((region) =>
-              <Typography key={region} variant="overline" component="p" paragraph color="text.secondary">
-                {region}
-              </Typography>
-            )}
-          </Stack>
-        </Grid>
+  const filteredProjects = filter(_mockProjekts, inputs);
+  //const filteredProjects = _mockProjekts;
+  // console.log('inputs', inputs)
+  // console.log('filteredProjects', filteredProjects)
+  useEffect(() => {
+    if (inputs.param !== initialInputs.param) {
+      setSorted(true);
+    }
+  }, [inputs])
+
+  return (
+    <Container disableGutters={true}>
+      <Grid container direction="column" justifyContent="center" spacing={2} sx={{
+        mt: 0
+      }}>
+        <FilterReferenzenCom
+          sorted={sorted}
+          inputs={inputs}
+          handleInputChange={handleInputChange}
+        />
         <Grid item>
           <Box
             display="grid"
             gridTemplateColumns={gtc}
+            //justifyItems='stretch'
             //gridAutoFlow="dense"
             columnGap="12px"
             rowGap="20px"
+            className='karolina'
           >
-            {_mockProjekts.map((project, i) => {
+            {filteredProjects.map((project, i) => {
               const divideIn2 = i % 2 == 0 ? true : false;
               const divideIn4 = (i + 1) % 4 == 0 ? true : false;
               const divideIn8 = (i + 1) % 8 == 0 ? true : false;
               return (
-
                 <ProjektCardCom
                   key={project.id}
                   project={project}
                   gridRow={divideIn2 ? '1' : '2'}
                   big={divideIn4 ? true : false}
-                  //big={true}
+                  //big={false}
                   rewerseBig={divideIn8 ? true : false}
                 />
               );
             })}
           </Box>
         </Grid>
-      </Grid>
-    </Container>
+      </Grid >
+    </Container >
+
   );
 }

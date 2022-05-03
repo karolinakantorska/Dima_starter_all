@@ -1,11 +1,9 @@
 import { m } from 'framer-motion';
-import { useRouter } from 'next/router';
-
 //import Image from 'next/image';
 // @mui
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+
 // components
 import { varHover, varTranHover } from '../animate';
 import Image from '../../components/Image';
@@ -14,15 +12,7 @@ import useResponsive from '../../hooks/useResponsive';
 import Link from 'next/link';
 import { ProjectType } from 'src/utils/TS/interface';
 import { TextCardCom } from './textCardCom';
-// utils
-import { firstLettersBig } from '../../utils/Text/textUtils';
-/*
-function randomWithProbability() {
-  const notRandomNumbers = [0, 0, 0, 0, 0, 0, 10, 1, 1, 1];
-  const idx = Math.floor(Math.random() * notRandomNumbers.length);
-  return notRandomNumbers[idx];
-}
-*/
+
 export function ProjektCardCom({
   project,
   gridRow,
@@ -37,20 +27,9 @@ export function ProjektCardCom({
   const { id, photo } = project;
   const isDesktop = useResponsive('up', 'lm');
   const isSmall = useResponsive('down', 'sm');
-  //const random = randomWithProbability();
   const gridAutoRows = isSmall ? '' : '1fr';
-  /*
-  let big = false;
-  if (isDesktop) {
-    if (random) {
-      big = true;
-    }
-  }
-  */
 
-  const gridColumn = () => (rewerseBig ? '2/span 2' : '1/span 2');
-  const mr = () => (rewerseBig ? '0px' : '-12px');
-  const ml = () => (rewerseBig ? '-12px' : '0px');
+  const gridColumn = () => (rewerseBig ? '3/span 3' : '1/span 3');
   const boxSmallProps = {
     display: 'grid',
     gridAutoRows: { gridAutoRows },
@@ -60,8 +39,8 @@ export function ProjektCardCom({
     gridColumn: 'span 3',
     display: 'grid',
     gridAutoFlow: 'column',
-    gridTemplateColumns: ' 1fr 1fr 1fr',
-    columnGap: '12px',
+    gridTemplateColumns: ' 1fr 12px 1fr 12px 1fr',
+    columnGap: '0px',
     gridAutoRows: 'repeat(2, 1fr)',
     overflow: 'hidden',
   }
@@ -71,8 +50,6 @@ export function ProjektCardCom({
   const cardBigProps = {
     gridColumn: gridColumn,
     gridRow: 'span 2',
-    ml: ml,
-    mr: mr,
   }
   return (!isDesktop ?
     (<Link href={`/referenz/${id}`}>
@@ -89,7 +66,7 @@ export function ProjektCardCom({
         >
           <Image src={photo.url} alt={photo.alt} ratio="16/9" />
         </Card>
-        <TextCardCom project={project} />
+        <TextCardCom project={project} big={big} rewerseBig={rewerseBig} />
       </Box>
     </Link>
     )
@@ -108,13 +85,11 @@ export function ProjektCardCom({
           transition={varTranHover()}
           sx={big ? {
             ...cardBigProps
-
           } : { ...cardSmallProps }}
         >
           <Image src={photo.url} alt={photo.alt} ratio="16/9" />
         </Card>
-        <TextCardCom project={project} />
-        {big && <Card sx={{ p: 4, backgroundColor: 'background.default' }} />}
+        <TextCardCom project={project} big={big} rewerseBig={rewerseBig} />
       </Box>
     </Link>
     )

@@ -26,15 +26,13 @@ export default function AnimatedStartLayout({ children }: Props) {
   }, []);
 
   const variantLeft = {
-    initial: { opacity: 1, x: 0 },
-    animate: { opacity: 1, x: -screenWidth },
+    initial: { opacity: 1, x: -screenWidth * 0.25 },
+    animate: { opacity: 0, x: -screenWidth },
     transition: { duration: 1 },
   };
   const variantRight = {
-    initial: {
-      opacity: 1, x: screenWidth * 0.5
-    },
-    animate: { opacity: 1, x: screenWidth },
+    initial: { opacity: 1, x: screenWidth * 0.75 },
+    animate: { opacity: 0, x: screenWidth },
     transition: { duration: 1 },
   };
   function CoverBox({ variant }: { variant: any }) {
@@ -44,7 +42,7 @@ export default function AnimatedStartLayout({ children }: Props) {
         component={m.div}
         sx={{
           zIndex: 1200,
-          width: '50vw',
+          width: '100vw',
           height: '100vh',
           backgroundColor: 'grey.700',
         }}
@@ -67,33 +65,3 @@ export default function AnimatedStartLayout({ children }: Props) {
     </>
   );
 }
-
-/*
-<Box
-        position="fixed"
-        sx={{
-          zIndex: 1200,
-          width: '50vw',
-          height: '100vh',
-          backgroundColor: 'grey.0',
-        }}
-        component={m.div}
-        initial={variants.initial}
-        animate={variantLeft.animate}
-        transition={variants.transition}
-      />
-      <Box
-        position="fixed"
-        sx={{
-          zIndex: 1200,
-          ml: '50vw',
-          width: '50vw',
-          height: '100vh',
-          backgroundColor: 'grey.0',
-        }}
-        component={m.div}
-        initial={variants.initial}
-        animate={variantRight.animate}
-        transition={variants.transition}
-      />
-  */

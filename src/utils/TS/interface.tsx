@@ -14,7 +14,7 @@ export interface ProjectType {
   region: Regionen;
   phase: ArrayOfPhases;
   client: string;
-  gu: Company;
+  size: number;
   architect: Company;
   cooperation?: {
     service: Services | string;
@@ -42,8 +42,7 @@ export const regionenArray = [
   'Glarus',
   'Zürich',
   'Arosa',
-  'Innerschweiz',
-  'Andere',
+  'Andere Regionen',
   'Alle',
 ] as const;
 export type Regionen = typeof regionenArray[number];
@@ -86,9 +85,8 @@ export type Services = typeof ServicesArray[number];
 export type ArrayOfServicesType = Services[];
 
 export type FilterParams = {
-  objektAlter: ObjektAlter;
-  objektType: ObjektType;
-  services: Services;
+  phase: Phase;
+  region: Regionen;
 };
 
 export type User = UserData | null;

@@ -86,6 +86,7 @@ export default function MUICheckbox() {
             <Block title="Size & Custom Icon" sx={style}>
               <FormControlLabel label="Normal" control={<Checkbox defaultChecked />} />
               <FormControlLabel label="Small" control={<Checkbox defaultChecked size="small" />} />
+              {/*Custom Icon */}
               <FormControlLabel
                 control={
                   <Checkbox
