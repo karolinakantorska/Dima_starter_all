@@ -21,7 +21,7 @@ export function TextCardCom({ project, big, rewerseBig }: { project: ProjectType
     backgroundColor: 'background.default'
   }
   const TextBox = () => (
-    <Box sx={big && { backgroundColor: 'background.paper', p: 4, minHeight: '300px' }}>
+    <Box sx={big ? { backgroundColor: 'background.paper', p: 4, minHeight: '300px' } : {}}>
       <Typography variant="h6" component="h2" sx={{
         mt: 2, mb: 0.5,
       }}>
