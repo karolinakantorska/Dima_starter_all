@@ -17,43 +17,28 @@ type Props = {
 };
 
 export default function AnimatedStartLayout({ children }: Props) {
-  const [screenWidth, setScreenWidth] = useState(600);
+  const [visible, setVisible] = useState(true);
   const { pathname } = useRouter();
   const isHome = pathname === '/';
   const isOneProject = pathname.includes('/referenz/');
   useEffect(() => {
-    setScreenWidth(window.screen.width);
+    setTimeout(() => setVisible(false), 500)
   }, []);
 
-  const variantLeft = {
-    initial: { opacity: 1, x: -screenWidth * 0.25 },
-    animate: { opacity: 0, x: -screenWidth },
-    transition: { duration: 1 },
+
+  const variant = {
+    initial: { opacity: 1, },
+    animate: { opacity: 0, },
+    transition: { duration: 0.5 },
   };
-  const variantRight = {
-    initial: { opacity: 1, x: screenWidth * 0.75 },
-    animate: { opacity: 0, x: screenWidth },
-    transition: { duration: 1 },
-  };
-  function CoverBox({ variant }: { variant: any }) {
-    return (
-      <Box
-        position="fixed"
-        component={m.div}
-        sx={{
-          zIndex: 1200,
-          width: '100vw',
-          height: '100vh',
-          backgroundColor: 'grey.700',
-        }}
-        {...variant}
-      />
-    )
-  }
+
   return (
     <>
-      <CoverBox variant={variantLeft} />
-      <CoverBox variant={variantRight} />
+      {visible && <Box
+        component={m.div}
+        {...variant}
+        sx={{ backgroundColor: 'dima', width: '100vw', height: '100vh', position: "fixed", zIndex: 1200 }}>
+      </Box>}
       <Container>
         <Stack
           sx={{ minHeight: 1 }}>

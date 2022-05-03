@@ -10,6 +10,7 @@ import { Box, Link, Container, Typography, Stack } from '@mui/material';
 import MainHeader from '../main/MainHeader';
 
 import { _MyMotionViewport } from '../../components/animate';
+import { RootStyle } from 'src/components/_Main/RootStyle';
 
 // ----------------------------------------------------------------------
 
@@ -25,40 +26,37 @@ export default function AnimatedEndLayout({ children }: Props) {
     setScreenWidth(window.screen.width);
   }, []);
 
-  const variantLeft = {
-    initial: { opacity: 0, x: -screenWidth },
-    exit: { opacity: 1, x: -screenWidth * 0.25 },
-    transition: { duration: 1 },
+  const variantUp = {
+    initial: { width: '0.11vw', height: 60, x: '8px', y: 0 },
+    exit: { width: '0.11vw', height: '100vw', x: '8px', },//, height: '100vw'
+    transition: { duration: 5, },
   };
-  const variantRight = {
-    initial: { opacity: 0, x: screenWidth },
-    exit: { opacity: 1, x: screenWidth * 0.75 },
-    transition: { duration: 1 },
-  };
-  function CoverBox({ variant }: { variant: any }) {
-    return (
-      <Box
-        position="fixed"
-        component={m.div}
-        sx={{
-          zIndex: 1200,
-          width: '100vw',
-          height: '100vh',
-          backgroundColor: 'grey.700',
-        }}
-        {...variant}
-      />
-    )
-  }
+
   return (
     <>
-      {isOneProject && (
-        <>
-          <CoverBox variant={variantLeft} />
-          <CoverBox variant={variantRight} />
-        </>
-      )}
+
       <Container  >
+        <RootStyle>
+          <Box
+            position="fixed"
+            display="grid"
+            gridTemplateColumns='1fr 1fr 1fr'
+            columnGap="12px"
+            justifyItems='end'
+            sx={{
+              height: '100px',
+              top: 0,
+              zIndex: 1200
+            }}
+          >
+            <Box
+              component={m.div}
+              {...variantUp}
+              sx={{ backgroundColor: 'dima', }}>
+            </Box>
+          </Box>
+        </RootStyle>
+
         <Stack sx={{ minHeight: 1 }}>
           <MainHeader />
           {children}
