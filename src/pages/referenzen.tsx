@@ -17,7 +17,5 @@ export default function Referenzen() {
         </RootStyle>
       </Page>
     </Layout>
-
-
   );
 }
