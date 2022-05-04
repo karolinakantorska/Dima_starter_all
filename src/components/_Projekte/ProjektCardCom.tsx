@@ -55,7 +55,7 @@ export function ProjektCardCom({
   }
 
   return (!isDesktop ?
-    (<Link href={`/referenz/${id}`} scroll={false} >
+    (<Link href={`/referenz/${id}`}  >
       <Box
         sx={{ ...boxSmallProps }}
         component={m.div}
@@ -76,7 +76,7 @@ export function ProjektCardCom({
     :
     (
       <>
-        <Link href={`/referenz/${id}`} scroll={false}>
+        <Link href={`/referenz/${id}`} >
           <Box
             sx={big ? {
               ...boxBigProps
