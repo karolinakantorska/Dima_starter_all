@@ -17,13 +17,13 @@ export default function Referenz() {
   const project = _mockProjekts.filter((project) => project.id === id);
   console.log('project', project);
   return (
-    <AnimatedStartLayout>
+    <Layout>
       <Page title="Projekte | Dima & Partner | Glarus Zurich Arosa">
         <RootStyle>
           <OneProjectCom project={project[0]} />
         </RootStyle>
       </Page>
-    </AnimatedStartLayout>
+    </Layout>
 
 
   );
