@@ -15,13 +15,16 @@ import { _mockProjekts } from '../../_mock/referenzen/referenzen';
 import { useForm } from 'src/utils/myUtils/useForm';
 import { filter } from 'src/utils/myUtils/filterFunction';
 import { FilterReferenzenCom } from './FilterReferenzenCom';
+import { BackgroundType } from '../animate/type';
 
 // TODO use location instead use route
 export function ReferenzenListCom() {
   const initialInputs = { param: "Alle" }
   const [sorted, setSorted] = useState(false);
   const [xPosition, setXPosition] = useState(200);
+  const [yPosition, setYPosition] = useState(728);
   const isDesktop = useResponsive('up', 'lm');
+  const isSmallDesktop = useResponsive('up', 'lg');
   const isSmall = useResponsive('down', 'sm');
   const gtc = isDesktop ? 'repeat(3, 1fr)' : isSmall ? '1fr' : 'repeat(2, 1fr)';
   const { query } = useRouter();
@@ -39,6 +42,7 @@ export function ReferenzenListCom() {
       else return 50
     }
     setXPosition(position())
+    setYPosition(728 - ((1700 - window.innerWidth) * 0.37))
   })
   useEffect(() => {
     if (inputs.param !== initialInputs.param) {
@@ -46,8 +50,12 @@ export function ReferenzenListCom() {
     }
   }, [inputs])
   const variantUp = {
-    initial: { height: '4px', width: 0, y: 728, x: 0 },
-    animate: { x: -xPosition, transition: { duration: .1 } },
+    initial: isSmallDesktop
+      ? { height: '4px', width: 0, y: 728, x: 0 }
+      : { height: '4px', width: 0, yPosition, x: 0 },
+    animate: isSmallDesktop
+      ? { x: -xPosition, transition: { duration: .1 } }
+      : { y: yPosition, x: -xPosition, transition: { duration: .1 } },
     exit: isAnimated && { width: ['0.1vw', '101.5vw', '101.5vw'], scaleY: [1, 1, 400] },
     transition: { duration: 1 },
   };
