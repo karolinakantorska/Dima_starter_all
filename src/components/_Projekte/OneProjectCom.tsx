@@ -1,4 +1,5 @@
 import { useState, ReactNode, useEffect } from 'react';
+import { m, useAnimation } from 'framer-motion';
 // @mui
 import { Box, Container, Grid, Paper, Stack, Typography } from '@mui/material';
 // _mock_

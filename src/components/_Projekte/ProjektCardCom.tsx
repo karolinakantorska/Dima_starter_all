@@ -31,11 +31,13 @@ export function ProjektCardCom({
 
   const gridColumn = () => (rewerseBig ? '3/span 3' : '1/span 3');
   const boxSmallProps = {
+    minWidth: '20px',
     display: 'grid',
     gridAutoRows: { gridAutoRows },
     overflow: 'hidden',
   }
   const boxBigProps = {
+    minWidth: '20px',
     gridColumn: 'span 3',
     display: 'grid',
     gridAutoFlow: 'column',
@@ -51,8 +53,9 @@ export function ProjektCardCom({
     gridColumn: gridColumn,
     gridRow: 'span 2',
   }
+
   return (!isDesktop ?
-    (<Link href={`/referenz/${id}`}>
+    (<Link href={`/referenz/${id}`} scroll={false} >
       <Box
         sx={{ ...boxSmallProps }}
         component={m.div}
@@ -71,27 +74,30 @@ export function ProjektCardCom({
     </Link>
     )
     :
-    (<Link href={`/referenz/${id}`}>
-      <Box
-        sx={big ? {
-          ...boxBigProps
-        } : { ...boxSmallProps }}
-        component={m.div}
-        whileHover="hover"
-      >
-        <Card
-          component={m.div}
-          variants={varHover(1.05)}
-          transition={varTranHover()}
-          sx={big ? {
-            ...cardBigProps
-          } : { ...cardSmallProps }}
-        >
-          <Image src={photo.url} alt={photo.alt} ratio="16/9" />
-        </Card>
-        <TextCardCom project={project} big={big} rewerseBig={rewerseBig} />
-      </Box>
-    </Link>
+    (
+      <>
+        <Link href={`/referenz/${id}`} scroll={false}>
+          <Box
+            sx={big ? {
+              ...boxBigProps
+            } : { ...boxSmallProps }}
+            component={m.div}
+            whileHover="hover"
+          >
+            <Card
+              component={m.div}
+              variants={varHover(1.05)}
+              transition={varTranHover()}
+              sx={big ? {
+                ...cardBigProps
+              } : { ...cardSmallProps }}
+            >
+              <Image src={photo.url} alt={photo.alt} ratio="16/9" />
+            </Card>
+            <TextCardCom project={project} big={big} rewerseBig={rewerseBig} />
+          </Box>
+        </Link>
+      </>
     )
   );
 }
